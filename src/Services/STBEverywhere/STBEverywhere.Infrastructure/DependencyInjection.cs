@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Infrastructure
 {
-    internal class DependencyInjection
+    public class DependencyInjection
     {
     }
 }
