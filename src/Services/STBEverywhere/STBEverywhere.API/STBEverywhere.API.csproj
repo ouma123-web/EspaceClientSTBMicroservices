@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ae36368f-036f-44f2-8e66-40c575d770e7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\STBEverywhere.Application\STBEverywhere.Application.csproj" />
+    <ProjectReference Include="..\STBEverywhere.Infrastructure\STBEverywhere.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
