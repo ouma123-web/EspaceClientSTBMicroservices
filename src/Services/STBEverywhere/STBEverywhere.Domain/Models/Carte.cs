@@ -1,10 +1,6 @@
 ﻿using STBEverywhere.Domain.Abstractions;
 using STBEverywhere.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace STBEverywhere.Domain.Models
 {
@@ -16,5 +12,21 @@ namespace STBEverywhere.Domain.Models
         public decimal CodeSecretCarte { get; set; }
 
         public DateOnly DateExpiration { get; set; }
+
+        public static Carte Create(CarteId id, string numCarte, decimal codeSecretCarte, DateOnly dateExpiration)
+        {
+            var carte = new Carte
+            {
+                Id = id,
+                NumCarte = numCarte,
+                CodeSecretCarte = codeSecretCarte,
+                DateExpiration = dateExpiration
+            };
+
+            return carte;
+        }
+
+
+
     }
 }

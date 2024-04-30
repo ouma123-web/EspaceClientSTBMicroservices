@@ -12,12 +12,14 @@ namespace STBEverywhere.Domain.Models
     public class Client : Entity<ClientId>
     {
 
+        private readonly List<Carte> _cartes = new();
+        public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
+ 
+
         private readonly List<Compte> _comptes = new();
         public IReadOnlyList<Compte> Comptes => _comptes.AsReadOnly();
 
 
-        private readonly List<Carte> _cartes = new();
-        public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
 
 
         internal Client(ClientId id, string nom, string prenom, string email)
