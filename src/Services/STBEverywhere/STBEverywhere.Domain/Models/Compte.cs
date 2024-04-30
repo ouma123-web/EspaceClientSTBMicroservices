@@ -24,6 +24,9 @@ namespace STBEverywhere.Domain.Models
         public DateTime DateOuverture { get; set; }
 
 
+        public IList<CompteTransaction> CompteTransactions { get; set; }
+
+
         public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)
         {
             var compte = new Compte
