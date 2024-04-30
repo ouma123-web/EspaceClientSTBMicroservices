@@ -14,16 +14,6 @@ namespace STBEverywhere.Domain.Models
     public class Compte : Entity<CompteId>
     {
 
-        internal Compte(ClientId clientId, string numcompte, decimal solde, DateTime dateouverture)
-        {
-            Id = CompteId.Of(Guid.NewGuid());
-            ClientId = clientId;
-            NumCompte = numcompte;
-            Solde = solde;
-            DateOuverture = dateouverture;
-        }
-
-
 
         [Key]
        // public int CompteId { get; set; }
@@ -35,14 +25,28 @@ namespace STBEverywhere.Domain.Models
         public DateTime DateOuverture { get; set; }
 
 
+        public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)
+        {
+            var compte = new Compte
+            {
+                Id = id,
+                NumCompte = numCompte,
+                Solde = solde,
+                DateOuverture = dateOuverture
+            };
 
+            return compte;
+        }
 
-
-      /*  public int? ClientId { get; set; }
-
-
-        [ForeignKey("ClientId")]
-
-        public virtual Client Client { get; set; }*/
     }
+
+
+
+        /*  public int? ClientId { get; set; }
+
+
+          [ForeignKey("ClientId")]
+
+          public virtual Client Client { get; set; }*/
+    
 }
