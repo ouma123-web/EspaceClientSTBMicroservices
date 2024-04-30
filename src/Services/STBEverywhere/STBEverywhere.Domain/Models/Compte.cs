@@ -15,7 +15,6 @@ namespace STBEverywhere.Domain.Models
     {
 
 
-        [Key]
        // public int CompteId { get; set; }
 
         public ClientId ClientId { get; set; }

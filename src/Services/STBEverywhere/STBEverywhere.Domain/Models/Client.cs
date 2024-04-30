@@ -9,21 +9,34 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Client : Aggregate<ClientId>
+    public class Client : Entity<ClientId>
     {
 
         private readonly List<Compte> _comptes = new();
         public IReadOnlyList<Compte> Comptes => _comptes.AsReadOnly();
 
 
+        private readonly List<Carte> _cartes = new();
+        public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
 
-        [Key]
+
+        internal Client(ClientId id, string nom, string prenom, string email)
+        {
+            Id = ClientId.Of(Guid.NewGuid()); ;
+            Nom = nom;
+            Prenom = prenom;
+            Email = email;
+
+        }
+
+
+     
         //public int ClientId { get; set; }
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
 
-         public static Client Create(ClientId id, string nom, string prenom, string email)
+        /* public static Client Create(ClientId id, string nom, string prenom, string email)
          {
          var client = new Client
          {
@@ -35,7 +48,7 @@ namespace STBEverywhere.Domain.Models
 
          return client;
          }
-        
+        */
 
 
     }
