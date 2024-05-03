@@ -9,12 +9,15 @@ using System.Transactions;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Transaction : Entity<TransactionId>
+    public class Transaction : Aggregate<TransactionId>
     {
+        private readonly List<CompteTransaction> _comptetransaction = new();
+        public IReadOnlyList<CompteTransaction> comptetransactions => _comptetransaction.AsReadOnly();
+
         public string Visualisation { get; set; }
         public decimal Montant { get; set; }
 
-        public IList<CompteTransaction> CompteTransaction { get; set; }
+       // public IList<CompteTransaction> CompteTransaction { get; set; }
 
     }
 }
