@@ -1,13 +1,4 @@
-﻿using STBEverywhere.Domain.Abstractions;
-using STBEverywhere.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace STBEverywhere.Domain.Models
+﻿namespace STBEverywhere.Domain.Models
 {
     public class Client : Aggregate<ClientId>
     {
