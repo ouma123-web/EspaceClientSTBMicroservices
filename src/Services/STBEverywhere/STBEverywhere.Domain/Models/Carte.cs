@@ -13,7 +13,7 @@ namespace STBEverywhere.Domain.Models
 
         public DateOnly DateExpiration { get; set; }
 
-        public static Carte Create(CarteId id, string numCarte, decimal codeSecretCarte, DateOnly dateExpiration)
+      /*  public static Carte Create(CarteId id, string numCarte, decimal codeSecretCarte, DateOnly dateExpiration)
         {
             var carte = new Carte
             {
@@ -25,7 +25,7 @@ namespace STBEverywhere.Domain.Models
 
             return carte;
         }
-
+      */
 
 
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Client : Entity<ClientId>
+    public class Client : Aggregate<ClientId>
     {
 
         //public List<Carte> cartes = new();
@@ -30,7 +30,7 @@ namespace STBEverywhere.Domain.Models
 
 
 
-        internal Client(ClientId id, string nom, string prenom, string email)
+       internal Client(ClientId id, string nom, string prenom, string email)
         {
             Id = ClientId.Of(Guid.NewGuid()); ;
             Nom = nom;
@@ -38,7 +38,7 @@ namespace STBEverywhere.Domain.Models
             Email = email;
 
         }
-
+      
 
      
         //public int ClientId { get; set; }
@@ -61,5 +61,13 @@ namespace STBEverywhere.Domain.Models
         */
 
 
+        public void Update(string nom, string prenom, string email)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Email = email;
+
+            AddDomainEvent(new ClientUpdateEvent(this));
+        }
     }
 }
