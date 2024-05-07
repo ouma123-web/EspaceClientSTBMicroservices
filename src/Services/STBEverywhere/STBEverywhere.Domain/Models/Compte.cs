@@ -27,18 +27,30 @@ namespace STBEverywhere.Domain.Models
         public IList<CompteTransaction> CompteTransactions { get; set; }
 
 
-        public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)
-        {
-            var compte = new Compte
-            {
-                Id = id,
-                NumCompte = numCompte,
-                Solde = solde,
-                DateOuverture = dateOuverture
-            };
+        /* public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)
+         {
+             var compte = new Compte
+             {
+                 Id = id,
+                 NumCompte = numCompte,
+                 Solde = solde,
+                 DateOuverture = dateOuverture
+             };
 
-            return compte;
+             return compte;
+         }
+        */
+        
+        
+        
+        
+        
+        public string ConsulterCompte()
+        {
+            return $"ClientId: {ClientId}, NumCompte: {NumCompte}, Solde: {Solde}, DateOuverture: {DateOuverture}";
         }
+
+
 
     }
 

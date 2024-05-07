@@ -29,10 +29,13 @@
             Email = email;
 
         }
-      
 
-     
+
+
         //public int ClientId { get; set; }
+
+        public Guid CompteId { get; set; } // Propriété pour l'identifiant du compte
+        public Guid CarteId { get; set; }
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
@@ -59,6 +62,12 @@
             Email = email;
 
             AddDomainEvent(new ClientUpdateEvent(this));
+        }
+
+
+        public string ConsulterClient()
+        {
+            return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, CompteId: {CompteId}, CarteId: {CarteId}";
         }
     }
 }
