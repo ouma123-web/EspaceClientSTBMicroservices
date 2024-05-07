@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Models
 {
-    internal class CarteElectronique : Carte
+    public class CarteElectronique : Carte
     {
         public int CarteId { get; set; }
     }
