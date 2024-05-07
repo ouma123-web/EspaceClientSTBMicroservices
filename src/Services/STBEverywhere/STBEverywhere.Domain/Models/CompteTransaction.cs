@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Models
 {
-    internal class CompteTransaction 
+    public class CompteTransaction 
     {
         public int TransactionId { get; set; }
 
