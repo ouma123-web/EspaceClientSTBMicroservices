@@ -4,7 +4,7 @@ using STBEverywhere.Domain.ValueObjects;
 
 namespace STBEverywhere.Domain.Models
 {
-    internal class Carte : Entity<CarteId>
+    public class Carte : Entity<CarteId>
     {
         public ClientId ClientId { get; set; }
         public string NumCarte { get; set; } = null!;
