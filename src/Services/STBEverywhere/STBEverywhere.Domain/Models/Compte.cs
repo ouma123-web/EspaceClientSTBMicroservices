@@ -18,13 +18,13 @@ namespace STBEverywhere.Domain.Models
        // public int CompteId { get; set; }
 
         public ClientId ClientId { get; set; }
+        public TransactionId TransactionId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
 
         public DateTime DateOuverture { get; set; }
 
 
-        public IList<CompteTransaction> CompteTransactions { get; set; }
 
 
         /* public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)

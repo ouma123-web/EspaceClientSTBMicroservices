@@ -11,8 +11,8 @@ namespace STBEverywhere.Domain.Models
 {
     public class Transaction : Aggregate<TransactionId>
     {
-        private readonly List<CompteTransaction> _comptetransaction = new();
-        public IReadOnlyList<CompteTransaction> comptetransactions => _comptetransaction.AsReadOnly();
+        private readonly List<Compte> _comptes = new();
+        public IReadOnlyList<Compte> Comptes => _comptes.AsReadOnly();
 
         public string Visualisation { get; set; }
         public decimal Montant { get; set; }

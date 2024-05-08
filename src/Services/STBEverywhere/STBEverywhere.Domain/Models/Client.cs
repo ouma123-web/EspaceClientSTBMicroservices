@@ -21,12 +21,14 @@
 
 
 
-       internal Client(ClientId id, string nom, string prenom, string email)
+       internal Client(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
         {
             Id = ClientId.Of(Guid.NewGuid()); ;
             Nom = nom;
             Prenom = prenom;
             Email = email;
+            Téléphone = téléphone;
+            Adresse = adresse;
 
         }
 
@@ -39,6 +41,8 @@
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public int Téléphone { get; set; } = int.MaxValue;
+        public string Adresse { get; set; } = string.Empty;
 
         /* public static Client Create(ClientId id, string nom, string prenom, string email)
          {
@@ -55,11 +59,13 @@
         */
 
 
-        public void Update(string nom, string prenom, string email)
+        public void Update(string nom, string prenom, string email, int téléphone, string adresse)
         {
             Nom = nom;
             Prenom = prenom;
             Email = email;
+            Téléphone = téléphone;
+            Adresse = adresse;
 
             AddDomainEvent(new ClientUpdateEvent(this));
         }
@@ -67,7 +73,7 @@
 
         public string ConsulterClient()
         {
-            return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, CompteId: {CompteId}, CarteId: {CarteId}";
+            return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, Téléphone: {Téléphone}, Adresse: {Adresse}, CompteId: {CompteId}, CarteId: {CarteId}";
         }
     }
 }
