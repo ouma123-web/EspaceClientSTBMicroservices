@@ -52,15 +52,20 @@ namespace STBEverywhere.Domain.Models
 
 
 
+        Compte nouveauCompte = new Compte
+        {
+            ClientId = clientId,
+            NumCompte = "Nouveau numéro de compte",
+            Solde = 0, // Solde initial
+            DateOuverture = DateTime.Now // Date d'ouverture du compte
+        };
+
+        // Maintenant, vous pouvez ajouter ce nouveau compte à votre collection de comptes si nécessaire
+        // Par exemple, si vous avez une liste de comptes
+        List<Compte> listeComptes = new List<Compte>();
+        listeComptes.Add(nouveauCompte);
+
+
     }
 
-
-
-        /*  public int? ClientId { get; set; }
-
-
-          [ForeignKey("ClientId")]
-
-          public virtual Client Client { get; set; }*/
-    
 }
