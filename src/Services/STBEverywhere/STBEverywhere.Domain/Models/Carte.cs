@@ -4,7 +4,7 @@ using STBEverywhere.Domain.ValueObjects;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Carte : Entity<CarteId>
+    public class Carte : Aggregate<CarteId>
     {
         public ClientId ClientId { get; set; }
         public string NumCarte { get; set; } = null!;
@@ -22,6 +22,15 @@ namespace STBEverywhere.Domain.Models
             return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}, Status: {Status}";
         }
 
+
+        public void Update( CarteStatus status)
+        {
+            Status = status;
+
+            AddDomainEvent(new CarteUpdateEvent(this));
+
+
+        }
 
 
 
