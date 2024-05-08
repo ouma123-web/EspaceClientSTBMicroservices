@@ -13,10 +13,13 @@ namespace STBEverywhere.Domain.Models
 
         public DateOnly DateExpiration { get; set; }
 
+        public CarteStatus Status { get; private set; } = CarteStatus.Bloqué;
+
+
 
         public string ConsulterCarte()
         {
-            return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}";
+            return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}, Status: {Status}";
         }
 
 
