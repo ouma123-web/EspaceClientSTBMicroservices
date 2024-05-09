@@ -51,20 +51,31 @@ namespace STBEverywhere.Domain.Models
         }
 
 
-
-       /* Compte nouveauCompte = new Compte
+      /*  public void Add(string numcompte, decimal solde, DateTime dateouverture)
         {
-            ClientId = clientId,
-            NumCompte = "Nouveau numéro de compte",
-            Solde = 0, // Solde initial
-            DateOuverture = DateTime.Now // Date d'ouverture du compte
-        };
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(numcompte);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(solde);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(dateouverture);
 
-        // Maintenant, vous pouvez ajouter ce nouveau compte à votre collection de comptes si nécessaire
-        // Par exemple, si vous avez une liste de comptes
-        List<Compte> listeComptes = new List<Compte>();
-        listeComptes.Add(nouveauCompte);
-       */
+            var compte = new Compte(Id, numcompte, solde, dateouverture);
+            _comptes.Add(compte);
+        }
+
+        */
+
+        /* Compte nouveauCompte = new Compte
+         {
+             ClientId = clientId,
+             NumCompte = "Nouveau numéro de compte",
+             Solde = 0, // Solde initial
+             DateOuverture = DateTime.Now // Date d'ouverture du compte
+         };
+
+         // Maintenant, vous pouvez ajouter ce nouveau compte à votre collection de comptes si nécessaire
+         // Par exemple, si vous avez une liste de comptes
+         List<Compte> listeComptes = new List<Compte>();
+         listeComptes.Add(nouveauCompte);
+        */
 
     }
 

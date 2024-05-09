@@ -75,5 +75,12 @@
         {
             return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, Téléphone: {Téléphone}, Adresse: {Adresse}, CompteId: {CompteId}, CarteId: {CarteId}";
         }
+
+
+
+
+        
+
+
     }
 }
