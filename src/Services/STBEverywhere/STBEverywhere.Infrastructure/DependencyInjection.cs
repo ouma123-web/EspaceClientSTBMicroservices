@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using STBEverywhere.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +19,8 @@ namespace STBEverywhere.Infrastructure
             var connectionString = configuration.GetConnectionString("Database");
 
             //Add services to the container.
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //  options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options =>
+              options.UseSqlServer(connectionString));
 
             //services.AddScoped<IApplicationDbContext,ApplicationDbContext();
 
