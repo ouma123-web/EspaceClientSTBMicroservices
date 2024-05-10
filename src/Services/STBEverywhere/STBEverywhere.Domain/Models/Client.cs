@@ -7,7 +7,7 @@
 
 
         private readonly List<Carte> _cartes = new();
-        public IReadOnlyList<Carte> cartes => _cartes.AsReadOnly();
+        public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
 
 
 

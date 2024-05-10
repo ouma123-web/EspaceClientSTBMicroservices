@@ -16,7 +16,7 @@ namespace STBEverywhere.Domain.Models
 
         public string Visualisation { get; set; }
         public decimal Montant { get; set; }
-        public TransactionType Type { get; set; }
+        public TransactionType Type { get; set; } = TransactionType.In;
 
         public Transaction(TransactionType type, string visualisation, decimal montant)
         {
