@@ -15,14 +15,12 @@ namespace STBEverywhere.Domain.Models
     {
 
 
-       // public int CompteId { get; set; }
 
         public ClientId ClientId { get; set; }
 
         public OpérationId OpérationId { get; set; }
 
       
-       //public TransactionId TransactionId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
 
@@ -31,19 +29,7 @@ namespace STBEverywhere.Domain.Models
 
 
 
-        /* public static Compte Create(CompteId id, string numCompte, decimal solde, DateTime dateOuverture)
-         {
-             var compte = new Compte
-             {
-                 Id = id,
-                 NumCompte = numCompte,
-                 Solde = solde,
-                 DateOuverture = dateOuverture
-             };
-
-             return compte;
-         }
-        */
+     
         
         
         
@@ -55,31 +41,7 @@ namespace STBEverywhere.Domain.Models
         }
 
 
-      /*  public void Add(string numcompte, decimal solde, DateTime dateouverture)
-        {
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(numcompte);
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(solde);
-            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(dateouverture);
-
-            var compte = new Compte(Id, numcompte, solde, dateouverture);
-            _comptes.Add(compte);
-        }
-
-        */
-
-        /* Compte nouveauCompte = new Compte
-         {
-             ClientId = clientId,
-             NumCompte = "Nouveau numéro de compte",
-             Solde = 0, // Solde initial
-             DateOuverture = DateTime.Now // Date d'ouverture du compte
-         };
-
-         // Maintenant, vous pouvez ajouter ce nouveau compte à votre collection de comptes si nécessaire
-         // Par exemple, si vous avez une liste de comptes
-         List<Compte> listeComptes = new List<Compte>();
-         listeComptes.Add(nouveauCompte);
-        */
+      
 
     }
 

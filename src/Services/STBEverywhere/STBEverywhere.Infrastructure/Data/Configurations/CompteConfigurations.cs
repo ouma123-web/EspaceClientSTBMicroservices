@@ -25,11 +25,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                .HasForeignKey(ca => ca.ClientId);
 
 
-           /* builder.HasOne<Transaction>()
-                .WithMany()
-                .HasForeignKey(co => co.TransactionId);
-           */
-
+          
 
             builder.Property(co => co.NumCompte).IsRequired();
 

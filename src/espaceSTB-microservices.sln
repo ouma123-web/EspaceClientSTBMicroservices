@@ -7,17 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "STBEverywhere", "STBEverywhere", "{E4FA6766-79CE-4847-ABB0-0AF4D3FE6D40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBEverywhere.API", "Services\STBEverywhere\STBEverywhere.API\STBEverywhere.API.csproj", "{2118A2DD-C477-45E2-A251-C2C5CAE752F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STBEverywhere.API", "Services\STBEverywhere\STBEverywhere.API\STBEverywhere.API.csproj", "{2118A2DD-C477-45E2-A251-C2C5CAE752F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBEverywhere.Domain", "Services\STBEverywhere\STBEverywhere.Domain\STBEverywhere.Domain.csproj", "{AC3D52F7-3DB1-4C10-BB6F-2DD7C7B9F896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STBEverywhere.Domain", "Services\STBEverywhere\STBEverywhere.Domain\STBEverywhere.Domain.csproj", "{AC3D52F7-3DB1-4C10-BB6F-2DD7C7B9F896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBEverywhere.Application", "Services\STBEverywhere\STBEverywhere.Application\STBEverywhere.Application.csproj", "{FB181895-B3DA-4979-9FF8-5164972B0B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STBEverywhere.Application", "Services\STBEverywhere\STBEverywhere.Application\STBEverywhere.Application.csproj", "{FB181895-B3DA-4979-9FF8-5164972B0B10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBEverywhere.Infrastructure", "Services\STBEverywhere\STBEverywhere.Infrastructure\STBEverywhere.Infrastructure.csproj", "{C2B2BEF1-81EA-4983-8A85-72963769B400}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STBEverywhere.Infrastructure", "Services\STBEverywhere\STBEverywhere.Infrastructure\STBEverywhere.Infrastructure.csproj", "{C2B2BEF1-81EA-4983-8A85-72963769B400}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{73365FAD-808D-4E7A-A0BC-881A81650CEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{6B21195F-C89C-4FB9-95EA-2329DEEBC588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{6B21195F-C89C-4FB9-95EA-2329DEEBC588}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3B064E0C-22B7-4236-A859-040D9E199D29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{6B21195F-C89C-4FB9-95EA-2329DEEBC588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B21195F-C89C-4FB9-95EA-2329DEEBC588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B21195F-C89C-4FB9-95EA-2329DEEBC588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B064E0C-22B7-4236-A859-040D9E199D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B064E0C-22B7-4236-A859-040D9E199D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B064E0C-22B7-4236-A859-040D9E199D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B064E0C-22B7-4236-A859-040D9E199D29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

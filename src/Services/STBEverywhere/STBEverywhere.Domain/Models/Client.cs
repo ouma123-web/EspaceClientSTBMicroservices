@@ -3,25 +3,24 @@
     public class Client : Aggregate<ClientId>
     {
 
-        //public List<Carte> cartes = new();
-
+        private readonly List<Compte> _comptes = new();
+        public IReadOnlyList<Compte> Comptes => _comptes.AsReadOnly();
 
         private readonly List<Carte> _cartes = new();
         public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
 
 
-
-        //private readonly List<Carte> _cartes = new();
-        //public IEnumerable<Carte> Cartes => _cartes.AsEnumerable();
-
-
-        private readonly List<Compte> _comptes = new();
-        public IReadOnlyList<Compte> Comptes => _comptes.AsReadOnly();
+        private readonly List<CréditClient> _créditclients = new();
+        public IReadOnlyList<CréditClient> CréditClients => _créditclients.AsReadOnly();
 
 
 
 
-       internal Client(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
+
+
+
+
+        internal Client(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
         {
             Id = ClientId.Of(Guid.NewGuid()); ;
             Nom = nom;

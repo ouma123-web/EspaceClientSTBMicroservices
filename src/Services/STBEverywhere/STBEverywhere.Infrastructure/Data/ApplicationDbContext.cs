@@ -24,8 +24,9 @@ namespace STBEverywhere.Infrastructure.Data
         public DbSet<Carte> Cartes => Set<Carte>();
         public DbSet<CarteElectronique> CarteElectroniques => Set<CarteElectronique>();
         public DbSet<CarteVisaPremier> CarteVisaPremiers => Set<CarteVisaPremier>();
-       // public DbSet<Transaction> Transactions => Set<Transaction>();
         public DbSet<Opération> Opérations => Set<Opération>();
+        public DbSet<Crédit> Crédits => Set<Crédit>();
+        public DbSet<CréditClient> CréditClients => Set<CréditClient>();
 
 
         protected override void OnModelCreating(ModelBuilder builder)

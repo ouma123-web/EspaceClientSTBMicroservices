@@ -12,7 +12,7 @@ using STBEverywhere.Infrastructure.Data;
 namespace STBEverywhere.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240513141404_InitialCreate")]
+    [Migration("20240513143604_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
