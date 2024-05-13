@@ -22,7 +22,7 @@ namespace STBEverywhere.Domain.Models
         public OpérationId OpérationId { get; set; }
 
       
-       public TransactionId TransactionId { get; set; }
+       //public TransactionId TransactionId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
 

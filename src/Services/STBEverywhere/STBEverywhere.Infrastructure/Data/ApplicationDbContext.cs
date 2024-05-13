@@ -24,7 +24,7 @@ namespace STBEverywhere.Infrastructure.Data
         public DbSet<Carte> Cartes => Set<Carte>();
         public DbSet<CarteElectronique> CarteElectroniques => Set<CarteElectronique>();
         public DbSet<CarteVisaPremier> CarteVisaPremiers => Set<CarteVisaPremier>();
-        public DbSet<Transaction> Transactions => Set<Transaction>();
+       // public DbSet<Transaction> Transactions => Set<Transaction>();
         public DbSet<Opération> Opérations => Set<Opération>();
 
 

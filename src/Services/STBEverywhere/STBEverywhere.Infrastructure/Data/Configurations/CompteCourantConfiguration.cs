@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STBEverywhere.Domain.Enums
+namespace STBEverywhere.Infrastructure.Data.Configurations
 {
-    public enum TransactionType
+    public class CompteCourantConfiguration
     {
-        In,
-        Out
     }
 }
