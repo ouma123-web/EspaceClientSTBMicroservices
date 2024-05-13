@@ -36,6 +36,8 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbStatus => (TransactionType)Enum.Parse(typeof(TransactionType), dbStatus));
 
 
+
+
         }
 
         }

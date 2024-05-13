@@ -10,9 +10,9 @@ namespace STBEverywhere.Domain.ValueObjects
     public record TransactionId
     {
         public Guid Value { get; }
-        private TransactionId() // Constructeur public sans paramètres pour EF Core
+        public TransactionId()
         {
-            Value = Guid.NewGuid(); // Initialisez la valeur par défaut si nécessaire
+            // Initialisez éventuellement les valeurs par défaut ici
         }
         private TransactionId(Guid value) => Value = value;
         public static TransactionId Of(Guid value)

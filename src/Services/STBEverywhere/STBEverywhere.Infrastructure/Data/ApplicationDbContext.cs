@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,14 +25,22 @@ namespace STBEverywhere.Infrastructure.Data
         public DbSet<CarteElectronique> CarteElectroniques => Set<CarteElectronique>();
         public DbSet<CarteVisaPremier> CarteVisaPremiers => Set<CarteVisaPremier>();
         public DbSet<Transaction> Transactions => Set<Transaction>();
+        public DbSet<Opération> Opérations => Set<Opération>();
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(builder);
+
+            
+
+
+           
         }
 
+
+       
 
     }
 }

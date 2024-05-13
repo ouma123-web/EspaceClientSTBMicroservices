@@ -18,7 +18,11 @@ namespace STBEverywhere.Domain.Models
        // public int CompteId { get; set; }
 
         public ClientId ClientId { get; set; }
-        public TransactionId TransactionId { get; set; }
+
+        public OpérationId OpérationId { get; set; }
+
+      
+       public TransactionId TransactionId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
 
