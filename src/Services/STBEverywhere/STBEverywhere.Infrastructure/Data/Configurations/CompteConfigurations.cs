@@ -23,11 +23,12 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
             builder.HasOne<Client>()
                .WithMany();
-
+               
 
 
             builder.HasOne<Opération>()
-                .WithMany();
+                .WithMany()
+                .HasForeignKey(o => o.OpérationId);
 
 
           

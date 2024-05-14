@@ -21,7 +21,8 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
             builder.HasMany(co => co.Comptes)
-                .WithOne();
+                .WithOne()
+                .HasForeignKey(c => c.ClientId);
 
 
             builder.HasMany(ca => ca.Cartes)

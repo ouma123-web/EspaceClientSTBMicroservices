@@ -21,7 +21,8 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => CarteId.Of(dbId));
 
             builder.HasOne<Client>()
-                .WithMany();
+                .WithMany()
+                .HasForeignKey(c => c.ClientId);
 
             builder.Property(ca => ca.Solde).IsRequired();
 
