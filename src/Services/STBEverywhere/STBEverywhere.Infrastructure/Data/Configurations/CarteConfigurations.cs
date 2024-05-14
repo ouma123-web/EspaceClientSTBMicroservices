@@ -22,7 +22,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
             builder.HasOne<Client>()
                 .WithMany()
-                .HasForeignKey(ca => ca.ClientId);
+                .HasForeignKey(c => c.ClientId);
 
             builder.Property(ca => ca.Solde).IsRequired();
 

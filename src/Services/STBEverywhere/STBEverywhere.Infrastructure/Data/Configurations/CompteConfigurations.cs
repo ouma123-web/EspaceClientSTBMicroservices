@@ -14,7 +14,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Compte> builder)
         {
-            builder.HasKey(co => co.Id);
+            builder.HasKey(co => co.Id); 
             builder.Property(co => co.Id).HasConversion(
                 compteId => compteId.Value,
                 dbId => CompteId.Of(dbId));
@@ -22,7 +22,12 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
             builder.HasOne<Client>()
                .WithMany()
-               .HasForeignKey(ca => ca.ClientId);
+               .HasForeignKey(c => c.ClientId);
+
+
+            builder.HasOne<Opération>()
+                .WithMany()
+                .HasForeignKey(o => o.OpérationId);
 
 
           
