@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STBEverywhere.Domain.Models
+namespace STBEverywhere.Domain.Enums
 {
-    public class CompteCourant : Compte
+    public enum CarteType
     {
-        public int AuthorisationDecouvert { get; set; }
+        CarteElectronique,
+        CarteVisaPremier
     }
 }

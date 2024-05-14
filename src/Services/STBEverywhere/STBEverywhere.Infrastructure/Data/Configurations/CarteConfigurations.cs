@@ -21,8 +21,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => CarteId.Of(dbId));
 
             builder.HasOne<Client>()
-                .WithMany()
-                .HasForeignKey(c => c.ClientId);
+                .WithMany();
 
             builder.Property(ca => ca.Solde).IsRequired();
 
@@ -37,6 +36,12 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
             .HasConversion(
                 s => s.ToString(),
                 dbStatus => (CarteStatus)Enum.Parse(typeof(CarteStatus), dbStatus));
+
+            builder.Property(ca => ca.Type)
+           .HasDefaultValue(CarteType.CarteElectronique)
+           .HasConversion(
+               s => s.ToString(),
+               dbStatus => (CarteType)Enum.Parse(typeof(CarteType), dbStatus));
 
 
         }

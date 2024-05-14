@@ -22,8 +22,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
             builder.HasMany(co => co.Comptes)
-                .WithOne()
-                .HasForeignKey(o => o.OpérationId);
+                .WithOne();
 
 
 

@@ -14,12 +14,24 @@ namespace STBEverywhere.Domain.Models
         public DateOnly DateExpiration { get; set; }
 
         public CarteStatus Status { get; private set; } = CarteStatus.Bloqué;
+        public CarteType Type { get; private set; } = CarteType.CarteElectronique;
+
+
+        public Carte(CarteType type, string numCarte, decimal solde,decimal codesecretcarte, DateOnly dateexpiration, CarteStatus status)
+        {
+            Type = type;
+            Status = status;
+            NumCarte = numCarte;
+            Solde = solde;
+            CodeSecretCarte = codesecretcarte;
+            DateExpiration = dateexpiration;
+        }
 
 
 
         public string ConsulterCarte()
         {
-            return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}, Status: {Status}";
+            return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}, Status: {Status}, Type: {Type}";
         }
 
 

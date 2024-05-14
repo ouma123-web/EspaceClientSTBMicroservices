@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using STBEverywhere.Domain.Enums;
 using STBEverywhere.Domain.Models;
 using STBEverywhere.Domain.ValueObjects;
 using System;
@@ -21,13 +22,12 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
             builder.HasOne<Client>()
-               .WithMany()
-               .HasForeignKey(c => c.ClientId);
+               .WithMany();
+
 
 
             builder.HasOne<Opération>()
-                .WithMany()
-                .HasForeignKey(o => o.OpérationId);
+                .WithMany();
 
 
           
@@ -37,6 +37,12 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
             builder.Property(co => co.Solde).IsRequired();
 
             builder.Property(co => co.DateOuverture).IsRequired();
+
+            builder.Property(co => co.Type)
+           .HasDefaultValue(CompteType.CompteCheque)
+           .HasConversion(
+               s => s.ToString(),
+               dbStatus => (CompteType)Enum.Parse(typeof(CompteType), dbStatus));
         }
 
 

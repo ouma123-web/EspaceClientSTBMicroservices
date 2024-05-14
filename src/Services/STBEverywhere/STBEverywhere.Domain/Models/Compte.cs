@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using STBEverywhere.Domain.Abstractions;
 using STBEverywhere.Domain.ValueObjects;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 
 namespace STBEverywhere.Domain.Models
 {
@@ -25,19 +26,20 @@ namespace STBEverywhere.Domain.Models
         public decimal Solde { get; set; }
 
         public DateTime DateOuverture { get; set; }
+        public CompteType Type { get; private set; } = CompteType.CompteCheque;
 
 
+        public Compte(CompteType type, string numCompte, decimal solde, DateTime dateouverture)
+        {
+            Type = type;
+            NumCompte = numCompte;
+            Solde = solde;
+            DateOuverture = dateouverture;
+        }
 
-
-     
-        
-        
-        
-        
-        
         public string ConsulterCompte()
         {
-            return $"ClientId: {ClientId}, NumCompte: {NumCompte}, Solde: {Solde}, DateOuverture: {DateOuverture}";
+            return $"ClientId: {ClientId}, NumCompte: {NumCompte}, Solde: {Solde}, DateOuverture: {DateOuverture}, Type:{Type}";
         }
 
 

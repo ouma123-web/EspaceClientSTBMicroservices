@@ -17,13 +17,9 @@ namespace STBEverywhere.Infrastructure.Data
 
         public DbSet<Client> Clients => Set<Client>();
         public DbSet<Compte> Comptes => Set<Compte>();
-        public DbSet<CompteCheque> CompteCheques => Set<CompteCheque>();
-        public DbSet<CompteCourant> CompteCourants => Set<CompteCourant>();
-        public DbSet<CompteEnDevise> CompteEnDevises => Set<CompteEnDevise>();
-        public DbSet<CompteEpargne> CompteEpargnes => Set<CompteEpargne>();
+        
         public DbSet<Carte> Cartes => Set<Carte>();
-        public DbSet<CarteElectronique> CarteElectroniques => Set<CarteElectronique>();
-        public DbSet<CarteVisaPremier> CarteVisaPremiers => Set<CarteVisaPremier>();
+      
         public DbSet<Opération> Opérations => Set<Opération>();
         public DbSet<Crédit> Crédits => Set<Crédit>();
         public DbSet<CréditClient> CréditClients => Set<CréditClient>();
