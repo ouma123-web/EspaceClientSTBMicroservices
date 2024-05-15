@@ -10,8 +10,8 @@
         public IReadOnlyList<Carte> Cartes => _cartes.AsReadOnly();
 
 
-        private readonly List<CréditClient> _créditclients = new();
-        public IReadOnlyList<CréditClient> CréditClients => _créditclients.AsReadOnly();
+        private readonly List<CreditClient> _creditclients = new();
+        public IReadOnlyList<CreditClient> CreditClients => _creditclients.AsReadOnly();
 
 
 
@@ -35,8 +35,10 @@
 
         //public int ClientId { get; set; }
 
-        public Guid CompteId { get; set; } // Propriété pour l'identifiant du compte
-        public Guid CarteId { get; set; }
+       /* public Guid CompteId { get; set; }              // Propriété pour l'identifiant du compte
+        public Guid CarteId { get; set; }*/
+
+
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
@@ -72,13 +74,13 @@
 
         public string ConsulterClient()
         {
-            return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, Téléphone: {Téléphone}, Adresse: {Adresse}, CompteId: {CompteId}, CarteId: {CarteId}";
+            return $"Nom: {Nom}, Prénom: {Prenom}, Email: {Email}, Téléphone: {Téléphone}, Adresse: {Adresse}";
         }
 
 
+        /*CompteId: {CompteId}, CarteId: {CarteId}*/
 
 
-        
 
 
     }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.ValueObjects
 {
-    public record CréditClientId
+    public record CreditClientId
     {
         public Guid Value { get; }
-        private CréditClientId(Guid value) => Value = value;
-        public static CréditClientId Of(Guid value)
+        private CreditClientId(Guid value) => Value = value;
+        public static CreditClientId Of(Guid value)
         {
             ArgumentNullException.ThrowIfNull(value);
             if (value == Guid.Empty)
             {
-                throw new DomainException("CréditClientId cannot be empty.");
+                throw new DomainException("CreditClientId cannot be empty.");
             }
 
-            return new CréditClientId(value);
+            return new CreditClientId(value);
         }
     }
 }

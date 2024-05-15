@@ -20,18 +20,21 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => ClientId.Of(dbId));
 
 
-            builder.HasMany(co => co.Comptes)
-                .WithOne()
-                .HasForeignKey(c => c.ClientId);
+            builder.HasMany(co => co.Comptes);
+              /*  .WithOne()
+                .HasForeignKey(c => c.ClientId);*/
 
 
-            builder.HasMany(ca => ca.Cartes)
-                .WithOne();
-              
+            builder.HasMany(ca => ca.Cartes);
+            /*  .WithOne()
+              .HasForeignKey(c => c.ClientId);*/
+
+            builder.HasMany(ccl => ccl.CreditClients);
 
 
 
-             builder.Property(c => c.Nom).HasMaxLength(100).IsRequired();
+
+            builder.Property(c => c.Nom).HasMaxLength(100).IsRequired();
              builder.Property(c => c.Prenom).HasMaxLength(100).IsRequired();
              builder.Property(c => c.Email).HasMaxLength(255);
              builder.HasIndex(c => c.Email).IsUnique();

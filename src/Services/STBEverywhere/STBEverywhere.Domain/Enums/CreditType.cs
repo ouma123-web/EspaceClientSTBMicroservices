@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Enums
 {
-    public enum CréditType
+    public enum CreditType
     {
-       Accepter,
-       Refuser
+        Accepter,
+        Refuser
     }
 }

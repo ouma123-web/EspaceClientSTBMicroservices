@@ -15,35 +15,26 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Compte> builder)
         {
-            builder.HasKey(co => co.Id); 
+            builder.HasKey(co => co.Id);
+
             builder.Property(co => co.Id).HasConversion(
                 compteId => compteId.Value,
                 dbId => CompteId.Of(dbId));
 
-
             builder.HasOne<Client>()
-               .WithMany();
-               
-
-
-            builder.HasOne<Opération>()
                 .WithMany()
-                .HasForeignKey(o => o.OpérationId);
+                .HasForeignKey("ClientId");
 
-
-          
-
+            builder.Property(co => co.OpérationId).IsRequired();
             builder.Property(co => co.NumCompte).IsRequired();
-
             builder.Property(co => co.Solde).IsRequired();
-
             builder.Property(co => co.DateOuverture).IsRequired();
 
             builder.Property(co => co.Type)
-           .HasDefaultValue(CompteType.CompteCheque)
-           .HasConversion(
-               s => s.ToString(),
-               dbStatus => (CompteType)Enum.Parse(typeof(CompteType), dbStatus));
+                .HasDefaultValue(CompteType.CompteCheque)
+                .HasConversion(
+                    s => s.ToString(),
+                    dbType => (CompteType)Enum.Parse(typeof(CompteType), dbType));
         }
 
 
