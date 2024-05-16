@@ -22,9 +22,13 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => CompteId.Of(dbId));
 
             builder.HasOne<Client>()
-                   .WithMany(c => c.Comptes)
-                   .HasForeignKey("ClientId")
-                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
+                   .WithMany()
+                   .HasForeignKey(co => co.ClientId);
+
+            builder.HasOne<Opération>()
+                .WithMany()
+                .HasForeignKey(o => o.OpérationId);
+                   
 
             builder.Property(co => co.OpérationId).IsRequired();
             builder.Property(co => co.NumCompte).IsRequired();

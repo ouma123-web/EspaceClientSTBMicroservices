@@ -14,19 +14,20 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<CreditClient> builder)
         {
             builder.HasKey(ccl => ccl.Id);
+
             builder.Property(ccl => ccl.Id).HasConversion(
                 creditClientId => creditClientId.Value,
                 dbId => CreditClientId.Of(dbId));
 
+
+
             builder.HasOne<Credit>()
-                    .WithMany(ccl => ccl.CreditClients)
-                    .HasForeignKey("CreditId")
-                    .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
+                .WithMany()
+                .HasForeignKey(ccl => ccl.CreditId);
 
             builder.HasOne<Client>()
-                   .WithMany(ccl => ccl.CreditClients)
-                   .HasForeignKey("ClientId")
-                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
+                   .WithMany()
+                   .HasForeignKey(ccl => ccl.ClientId);
 
 
             // Other property configurations...

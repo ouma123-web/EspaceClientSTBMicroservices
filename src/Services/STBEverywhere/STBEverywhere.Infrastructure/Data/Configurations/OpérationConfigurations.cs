@@ -16,14 +16,14 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Opération> builder)
         {
             builder.HasKey(o => o.Id);
+
             builder.Property(o => o.Id).HasConversion(
                 opérationId => opérationId.Value,
                 dbId => OpérationId.Of(dbId));
 
             builder.HasMany(o => o.Comptes)
-                   .WithOne()
-                   .HasForeignKey(c => c.OpérationId)
-                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
+                    .WithOne()
+                    .HasForeignKey(co => co.ClientId);
 
             builder.Property(o => o.Visualisation).HasMaxLength(100).IsRequired();
             builder.Property(o => o.Montant).IsRequired();

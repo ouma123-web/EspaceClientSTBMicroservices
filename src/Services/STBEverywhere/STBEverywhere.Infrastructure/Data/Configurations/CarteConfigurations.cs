@@ -16,14 +16,16 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Carte> builder)
         {
             builder.HasKey(ca => ca.Id);
+
             builder.Property(ca => ca.Id).HasConversion(
                 carteId => carteId.Value,
                 dbId => CarteId.Of(dbId));
 
+
+
             builder.HasOne<Client>()
-                   .WithMany(c => c.Cartes)
-                   .HasForeignKey("ClientId")
-                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
+                   .WithMany()
+                   .HasForeignKey(ca => ca.ClientId);
 
             builder.Property(ca => ca.Solde).IsRequired();
             builder.Property(ca => ca.CodeSecretCarte).IsRequired();

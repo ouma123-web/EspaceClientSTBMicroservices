@@ -15,14 +15,16 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Credit> builder)
         {
             builder.HasKey(cr => cr.Id);
+
             builder.Property(cr => cr.Id).HasConversion(
                 creditId => creditId.Value,
                 dbId => CreditId.Of(dbId));
 
-            builder.HasMany(c => c.CreditClients)
-                    .WithOne()
-                    .HasForeignKey("ClientId") // Assuming ClientId is a Guid
-                    .OnDelete(DeleteBehavior.NoAction);
+
+
+            builder.HasMany(cr => cr.CreditClients)
+                              .WithOne()
+                              .HasForeignKey(ccl => ccl.ClientId); // Assuming ClientId is a Guid
 
             builder.Property(cr => cr.Code).HasMaxLength(100).IsRequired();
             builder.Property(cr => cr.MaxDuree).HasMaxLength(100).IsRequired();
