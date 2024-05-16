@@ -20,28 +20,20 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 opérationId => opérationId.Value,
                 dbId => OpérationId.Of(dbId));
 
-
-            builder.HasMany(co => co.Comptes);
-               /* .WithOne()
-                .HasForeignKey(o => o.OpérationId);*/
-
-
+            builder.HasMany(o => o.Comptes)
+                   .WithOne()
+                   .HasForeignKey(c => c.OpérationId)
+                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
 
             builder.Property(o => o.Visualisation).HasMaxLength(100).IsRequired();
-
             builder.Property(o => o.Montant).IsRequired();
 
             builder.Property(o => o.Type)
-            .HasDefaultValue(OpérationType.Out)
-            .HasConversion(
-                s => s.ToString(),
-                dbStatus => (OpérationType)Enum.Parse(typeof(OpérationType), dbStatus));
-
-
-
-
-
-
+                   .HasDefaultValue(OpérationType.Out)
+                   .HasConversion(
+                       s => s.ToString(),
+                       dbStatus => (OpérationType)Enum.Parse(typeof(OpérationType), dbStatus));
         }
     }
+
 }

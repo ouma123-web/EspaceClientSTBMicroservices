@@ -19,33 +19,31 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 clientId => clientId.Value,
                 dbId => ClientId.Of(dbId));
 
+            builder.HasMany(c => c.Comptes)
+                   .WithOne()
+                   .HasForeignKey("ClientId")
+                   .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasMany(co => co.Comptes);
-              /*  .WithOne()
-                .HasForeignKey(c => c.ClientId);*/
+            builder.HasMany(c => c.Cartes)
+                   .WithOne()
+                   .HasForeignKey("ClientId")
+                   .OnDelete(DeleteBehavior.NoAction);
 
-
-            builder.HasMany(ca => ca.Cartes);
-            /*  .WithOne()
-              .HasForeignKey(c => c.ClientId);*/
-
-            builder.HasMany(ccl => ccl.CreditClients);
-
-
+            // Adjust the foreign key property to match the primary key type
+            builder.HasMany(c => c.CreditClients)
+                   .WithOne()
+                   .HasForeignKey("ClientId") // Assuming ClientId is a Guid
+                   .OnDelete(DeleteBehavior.NoAction);
 
 
             builder.Property(c => c.Nom).HasMaxLength(100).IsRequired();
-             builder.Property(c => c.Prenom).HasMaxLength(100).IsRequired();
-             builder.Property(c => c.Email).HasMaxLength(255);
-             builder.HasIndex(c => c.Email).IsUnique();
-             builder.Property(c => c.Téléphone).HasMaxLength(100).IsRequired();
-             builder.Property(c => c.Adresse).HasMaxLength(100).IsRequired();
-            
-
-
-
-
-
+            builder.Property(c => c.Prenom).HasMaxLength(100).IsRequired();
+            builder.Property(c => c.Email).HasMaxLength(255);
+            builder.HasIndex(c => c.Email).IsUnique();
+            builder.Property(c => c.Téléphone).HasMaxLength(100).IsRequired();
+            builder.Property(c => c.Adresse).HasMaxLength(100).IsRequired();
         }
     }
+
+
 }

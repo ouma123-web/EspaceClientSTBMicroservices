@@ -15,24 +15,25 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         {
             builder.HasKey(ccl => ccl.Id);
             builder.Property(ccl => ccl.Id).HasConversion(
-                creditclientId => creditclientId.Value,
+                creditClientId => creditClientId.Value,
                 dbId => CreditClientId.Of(dbId));
 
+            builder.HasOne<Credit>()
+                    .WithMany(ccl => ccl.CreditClients)
+                    .HasForeignKey("CreditId")
+                    .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
 
             builder.HasOne<Client>()
-                .WithMany()
-            .HasForeignKey("ClientId");
-
-            builder.HasOne<Credit>()
-                .WithMany()
-            .HasForeignKey("CreditId");
+                   .WithMany(ccl => ccl.CreditClients)
+                   .HasForeignKey("ClientId")
+                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
 
 
+            // Other property configurations...
             builder.Property(ccl => ccl.DateDeblocage).HasMaxLength(100).IsRequired();
-
             builder.Property(ccl => ccl.MontantDebloquer).IsRequired();
-
-
         }
+
     }
+
 }

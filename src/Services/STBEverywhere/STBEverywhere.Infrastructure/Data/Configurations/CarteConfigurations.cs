@@ -21,8 +21,9 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => CarteId.Of(dbId));
 
             builder.HasOne<Client>()
-                .WithMany()
-                .HasForeignKey("ClientId");
+                   .WithMany(c => c.Cartes)
+                   .HasForeignKey("ClientId")
+                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
 
             builder.Property(ca => ca.Solde).IsRequired();
             builder.Property(ca => ca.CodeSecretCarte).IsRequired();
@@ -30,19 +31,17 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
             builder.Property(ca => ca.DateExpiration).IsRequired();
 
             builder.Property(ca => ca.Status)
-                .HasDefaultValue(CarteStatus.Débloqué)
-                .HasConversion(
-                    s => s.ToString(),
-                    dbStatus => (CarteStatus)Enum.Parse(typeof(CarteStatus), dbStatus));
+                   .HasDefaultValue(CarteStatus.Débloqué)
+                   .HasConversion(
+                       s => s.ToString(),
+                       dbStatus => (CarteStatus)Enum.Parse(typeof(CarteStatus), dbStatus));
 
             builder.Property(ca => ca.Type)
-                .HasDefaultValue(CarteType.CarteElectronique)
-                .HasConversion(
-                    s => s.ToString(),
-                    dbType => (CarteType)Enum.Parse(typeof(CarteType), dbType));
-
-            
-
+                   .HasDefaultValue(CarteType.CarteElectronique)
+                   .HasConversion(
+                       s => s.ToString(),
+                       dbType => (CarteType)Enum.Parse(typeof(CarteType), dbType));
         }
     }
+
 }

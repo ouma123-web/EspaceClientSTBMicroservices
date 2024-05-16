@@ -19,27 +19,21 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 creditId => creditId.Value,
                 dbId => CreditId.Of(dbId));
 
-
-
-            builder.HasMany(ccl => ccl.CreditClients);
-
-
-
+            builder.HasMany(c => c.CreditClients)
+                    .WithOne()
+                    .HasForeignKey("ClientId") // Assuming ClientId is a Guid
+                    .OnDelete(DeleteBehavior.NoAction);
 
             builder.Property(cr => cr.Code).HasMaxLength(100).IsRequired();
-
             builder.Property(cr => cr.MaxDuree).HasMaxLength(100).IsRequired();
-
             builder.Property(cr => cr.MaxMontant).IsRequired();
 
             builder.Property(cr => cr.Type)
-            .HasDefaultValue(CreditType.Accepter)
-            .HasConversion(
-                s => s.ToString(),
-                dbStatus => (CreditType)Enum.Parse(typeof(CreditType), dbStatus));
-
-
-
+                   .HasDefaultValue(CreditType.Accepter)
+                   .HasConversion(
+                       s => s.ToString(),
+                       dbStatus => (CreditType)Enum.Parse(typeof(CreditType), dbStatus));
         }
     }
-    }
+
+}

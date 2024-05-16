@@ -9,12 +9,10 @@ namespace STBEverywhere.Domain.Models
 {
     public class CreditClient : Entity<CreditClientId>
     {
-        public Client Client { get; set; }
-        public Credit Credit { get; set; }
+        public ClientId ClientId { get; set; }
+        public CreditId CreditId { get; set; }
 
-      
         public string DateDeblocage { get; set; }
         public decimal MontantDebloquer { get; set; }
-
     }
 }

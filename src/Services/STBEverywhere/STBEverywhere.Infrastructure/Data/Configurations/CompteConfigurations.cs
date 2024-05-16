@@ -22,8 +22,9 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 dbId => CompteId.Of(dbId));
 
             builder.HasOne<Client>()
-                .WithMany()
-                .HasForeignKey("ClientId");
+                   .WithMany(c => c.Comptes)
+                   .HasForeignKey("ClientId")
+                   .OnDelete(DeleteBehavior.NoAction); // Spécifie OnDelete NoAction pour éviter les cascades
 
             builder.Property(co => co.OpérationId).IsRequired();
             builder.Property(co => co.NumCompte).IsRequired();
@@ -31,13 +32,11 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
             builder.Property(co => co.DateOuverture).IsRequired();
 
             builder.Property(co => co.Type)
-                .HasDefaultValue(CompteType.CompteCheque)
-                .HasConversion(
-                    s => s.ToString(),
-                    dbType => (CompteType)Enum.Parse(typeof(CompteType), dbType));
+                   .HasDefaultValue(CompteType.CompteCheque)
+                   .HasConversion(
+                       s => s.ToString(),
+                       dbType => (CompteType)Enum.Parse(typeof(CompteType), dbType));
         }
+    }
 
-
-
-        }
 }
