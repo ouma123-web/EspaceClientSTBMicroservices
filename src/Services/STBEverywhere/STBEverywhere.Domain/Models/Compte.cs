@@ -24,13 +24,26 @@ namespace STBEverywhere.Domain.Models
         public DateTime DateOuverture { get; set; }
         public CompteType Type { get; private set; } = CompteType.CompteCheque;
 
-        // Constructeur avec paramètres correspondant aux noms des propriétés
-        public Compte(CompteType type, string numCompte, decimal solde, DateTime DateOuverture)
+        //// Constructeur avec paramètres correspondant aux noms des propriétés
+        //public Compte(CompteType type, string numCompte, decimal solde, DateTime DateOuverture)
+        //{
+        //    Type = type;
+        //    NumCompte = numCompte;
+        //    Solde = solde;
+        //    this.DateOuverture = DateOuverture;
+        //}
+
+        public Compte(ClientId clientId, OpérationId opérationId, CompteType type, string numCompte, decimal solde, DateTime dateOuverture)
         {
+            if (string.IsNullOrWhiteSpace(numCompte)) throw new ArgumentException("NumCompte cannot be null or empty.", nameof(numCompte));
+            if (dateOuverture > DateTime.Now) throw new ArgumentException("DateOuverture cannot be in the future.", nameof(dateOuverture));
+
+            ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
+            OpérationId = opérationId ?? throw new ArgumentNullException(nameof(opérationId));
             Type = type;
             NumCompte = numCompte;
             Solde = solde;
-            this.DateOuverture = DateOuverture;
+            DateOuverture = dateOuverture;
         }
         public string ConsulterCompte()
         {
@@ -38,7 +51,18 @@ namespace STBEverywhere.Domain.Models
         }
 
 
-      
+        public void Credit(decimal amount)
+        {
+            if (amount <= 0) throw new ArgumentException("Amount must be positive.", nameof(amount));
+            Solde += amount;
+        }
+
+        public void Debit(decimal amount)
+        {
+            if (amount <= 0) throw new ArgumentException("Amount must be positive.", nameof(amount));
+            if (Solde < amount) throw new InvalidOperationException("Insufficient funds.");
+            Solde -= amount;
+        }
 
     }
 

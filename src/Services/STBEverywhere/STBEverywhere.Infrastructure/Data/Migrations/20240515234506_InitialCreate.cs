@@ -107,12 +107,11 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClientId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreditId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreditId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateDeblocage = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     MontantDebloquer = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreditId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreditId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -128,22 +127,12 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CreditClients_Clients_ClientId1",
-                        column: x => x.ClientId1,
-                        principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_CreditClients_Credits_CreditId",
                         column: x => x.CreditId,
                         principalTable: "Credits",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_CreditClients_Credits_CreditId1",
-                        column: x => x.CreditId1,
-                        principalTable: "Credits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    
                 });
 
             migrationBuilder.CreateTable(
@@ -220,11 +209,6 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
                 name: "IX_CreditClients_ClientId",
                 table: "CreditClients",
                 column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CreditClients_ClientId1",
-                table: "CreditClients",
-                column: "ClientId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CreditClients_CreditId",

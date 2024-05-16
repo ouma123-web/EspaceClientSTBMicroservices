@@ -25,9 +25,15 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 .WithMany()
                 .HasForeignKey("ClientId");
 
+            //builder.Property(co => co.OpérationId).IsRequired().HasConversion(
+            //  opId => opId.Value,
+            //  dbId => OpérationId.Of(dbId));
+
             builder.Property(co => co.OpérationId).IsRequired();
             builder.Property(co => co.NumCompte).IsRequired();
-            builder.Property(co => co.Solde).IsRequired();
+            //builder.Property(co => co.Solde).IsRequired();
+            builder.Property(co => co.Solde).IsRequired().HasColumnType("decimal(18,2)");
+
             builder.Property(co => co.DateOuverture).IsRequired();
 
             builder.Property(co => co.Type)

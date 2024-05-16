@@ -12,7 +12,7 @@ using STBEverywhere.Infrastructure.Data;
 namespace STBEverywhere.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240515120100_InitialCreate")]
+    [Migration("20240515234506_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -233,16 +233,13 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
                     b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClientId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("CreditId")
+                    b.Property<Guid>("CreditId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CreditId1")
@@ -265,8 +262,6 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("ClientId1");
 
                     b.HasIndex("CreditId");
 
@@ -345,24 +340,20 @@ namespace STBEverywhere.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("STBEverywhere.Domain.Models.CreditClient", b =>
                 {
-                    b.HasOne("STBEverywhere.Domain.Models.Client", null)
-                        .WithMany()
+                    b.HasOne("STBEverywhere.Domain.Models.Client", "Client")
+                        .WithMany("CreditClients")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("STBEverywhere.Domain.Models.Client", "Client")
+                    b.HasOne("STBEverywhere.Domain.Models.Credit", null)
                         .WithMany("CreditClients")
-                        .HasForeignKey("ClientId1")
+                        .HasForeignKey("CreditId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("STBEverywhere.Domain.Models.Credit", null)
-                        .WithMany()
-                        .HasForeignKey("CreditId");
-
                     b.HasOne("STBEverywhere.Domain.Models.Credit", "Credit")
-                        .WithMany("CreditClients")
+                        .WithMany()
                         .HasForeignKey("CreditId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

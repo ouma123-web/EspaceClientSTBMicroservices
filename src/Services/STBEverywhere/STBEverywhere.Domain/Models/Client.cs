@@ -22,7 +22,8 @@
 
         internal Client(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
         {
-            Id = ClientId.Of(Guid.NewGuid()); ;
+            //Id = ClientId.Of(Guid.NewGuid());
+            Id = id ?? ClientId.Of(Guid.NewGuid());
             Nom = nom;
             Prenom = prenom;
             Email = email;

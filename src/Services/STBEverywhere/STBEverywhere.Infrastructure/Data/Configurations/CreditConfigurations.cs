@@ -21,8 +21,10 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
 
-            builder.HasMany(ccl => ccl.CreditClients);
-
+            //builder.HasMany(ccl => ccl.CreditClients);
+            builder.HasMany(cr => cr.CreditClients)
+               .WithOne()
+               .HasForeignKey("CreditId");
 
 
 
@@ -30,7 +32,9 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
             builder.Property(cr => cr.MaxDuree).HasMaxLength(100).IsRequired();
 
-            builder.Property(cr => cr.MaxMontant).IsRequired();
+            //builder.Property(cr => cr.MaxMontant).IsRequired();
+            builder.Property(cr => cr.MaxMontant).IsRequired().HasColumnType("decimal(18,2)");
+
 
             builder.Property(cr => cr.Type)
             .HasDefaultValue(CreditType.Accepter)
