@@ -34,7 +34,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
             builder.Property(o => o.Visualisation).HasMaxLength(100).IsRequired();
 
-            builder.Property(o => o.Montant).IsRequired();
+            builder.Property(o => o.Montant).IsRequired().HasColumnType("decimal(18,2)");
 
             builder.Property(o => o.Type)
             .HasDefaultValue(OpérationType.Out)

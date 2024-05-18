@@ -22,7 +22,7 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
 
-            builder.Property(ca => ca.Solde).IsRequired();
+            builder.Property(ca => ca.Solde).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(ca => ca.CodeSecretCarte).IsRequired();
             builder.Property(ca => ca.NumCarte).IsRequired();
             builder.Property(ca => ca.DateExpiration).IsRequired();
