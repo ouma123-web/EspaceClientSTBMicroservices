@@ -13,28 +13,26 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<CreditClient> builder)
         {
-            builder.HasKey(ccl => ccl.Id);
 
+
+            builder.HasKey(ccl => ccl.Id);
             builder.Property(ccl => ccl.Id).HasConversion(
-                creditClientId => creditClientId.Value,
+                creditclientId => creditclientId.Value,
                 dbId => CreditClientId.Of(dbId));
 
 
 
-            builder.HasOne<Credit>()
-                .WithMany()
-                .HasForeignKey(ccl => ccl.CreditId);
 
-            builder.HasOne<Client>()
-                   .WithMany()
-                   .HasForeignKey(ccl => ccl.ClientId);
+            builder.Property(ccl => ccl.DateDeblocage)
+                .HasMaxLength(100)
+                .IsRequired();
 
+            builder.Property(ccl => ccl.MontantDebloquer)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)");
 
-            // Other property configurations...
-            builder.Property(ccl => ccl.DateDeblocage).HasMaxLength(100).IsRequired();
-            builder.Property(ccl => ccl.MontantDebloquer).IsRequired();
         }
-
     }
 
 }
+

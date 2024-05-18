@@ -15,7 +15,6 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Credit> builder)
         {
             builder.HasKey(cr => cr.Id);
-
             builder.Property(cr => cr.Id).HasConversion(
                 creditId => creditId.Value,
                 dbId => CreditId.Of(dbId));
@@ -23,18 +22,30 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
             builder.HasMany(cr => cr.CreditClients)
-                              .WithOne()
-                              .HasForeignKey(ccl => ccl.ClientId); // Assuming ClientId is a Guid
+               .WithOne()
+               .HasForeignKey(ccl => ccl.CreditId);
+
+
+
+
+
 
             builder.Property(cr => cr.Code).HasMaxLength(100).IsRequired();
+
             builder.Property(cr => cr.MaxDuree).HasMaxLength(100).IsRequired();
-            builder.Property(cr => cr.MaxMontant).IsRequired();
+
+            //builder.Property(cr => cr.MaxMontant).IsRequired();
+            builder.Property(cr => cr.MaxMontant).IsRequired().HasColumnType("decimal(18,2)");
+
 
             builder.Property(cr => cr.Type)
-                   .HasDefaultValue(CreditType.Accepter)
-                   .HasConversion(
-                       s => s.ToString(),
-                       dbStatus => (CreditType)Enum.Parse(typeof(CreditType), dbStatus));
+            .HasDefaultValue(CreditType.Accepter)
+            .HasConversion(
+                s => s.ToString(),
+                dbStatus => (CreditType)Enum.Parse(typeof(CreditType), dbStatus));
+
+
+
         }
     }
 

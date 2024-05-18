@@ -21,26 +21,25 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
                 compteId => compteId.Value,
                 dbId => CompteId.Of(dbId));
 
-            builder.HasOne<Client>()
-                   .WithMany()
-                   .HasForeignKey(co => co.ClientId);
 
-            builder.HasOne<Opération>()
-                .WithMany()
-                .HasForeignKey(o => o.OpérationId);
-                   
 
-            builder.Property(co => co.OpérationId).IsRequired();
+
+
             builder.Property(co => co.NumCompte).IsRequired();
-            builder.Property(co => co.Solde).IsRequired();
+            //builder.Property(co => co.Solde).IsRequired();
+            builder.Property(co => co.Solde).IsRequired().HasColumnType("decimal(18,2)");
+
             builder.Property(co => co.DateOuverture).IsRequired();
 
             builder.Property(co => co.Type)
-                   .HasDefaultValue(CompteType.CompteCheque)
-                   .HasConversion(
-                       s => s.ToString(),
-                       dbType => (CompteType)Enum.Parse(typeof(CompteType), dbType));
+                .HasDefaultValue(CompteType.CompteCheque)
+                .HasConversion(
+                    s => s.ToString(),
+                    dbType => (CompteType)Enum.Parse(typeof(CompteType), dbType));
         }
+
+
+
     }
 
 }
