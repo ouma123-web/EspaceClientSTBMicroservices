@@ -20,23 +20,7 @@
 
 
 
-        internal Client(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
-        {
-            Id = ClientId.Of(Guid.NewGuid()); ;
-            Nom = nom;
-            Prenom = prenom;
-            Email = email;
-            Téléphone = téléphone;
-            Adresse = adresse;
-
-        }
-
-
-
-        //public int ClientId { get; set; }
-
-       /* public Guid CompteId { get; set; }              // Propriété pour l'identifiant du compte
-        public Guid CarteId { get; set; }*/
+       
 
 
         public string Nom { get; set; } = string.Empty;
