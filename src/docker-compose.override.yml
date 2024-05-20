@@ -1,6 +1,19 @@
 version: '3.4'
 
 services:
+
+
+  stbeverywhereespaceclient:
+    container_name: stbeverywhereespaceclient
+    environment: 
+    - ENV_VAR1=valeur1
+    - ENV_VAR2=valeur2
+    restart: always
+    ports: 
+    - "1433:1433"
+
+
+
   stbeverywhere.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

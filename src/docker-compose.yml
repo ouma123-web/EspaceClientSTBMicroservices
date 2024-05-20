@@ -6,3 +6,7 @@ services:
     build:
       context: .
       dockerfile: Services/STBEverywhere/STBEverywhere.API/Dockerfile
+
+
+  stbeverywhereespaceclient:
+    image: mcr.microsoft.com/mssql/server
