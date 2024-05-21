@@ -1,12 +1,19 @@
 version: '3.4'
 
 services:
-  stbeverywhere.api:
+ 
+
+
+  stbeverywhereapi:
     image: ${DOCKER_REGISTRY-}stbeverywhereapi
     build:
       context: .
       dockerfile: Services/STBEverywhere/STBEverywhere.API/Dockerfile
 
 
-  stbeverywhereespaceclient:
+
+  stbeverywhereespaceclientdb:
     image: mcr.microsoft.com/mssql/server
+
+
+ 

@@ -25,18 +25,21 @@ namespace STBEverywhere.Domain.Models
         public CompteType Type { get; private set; } = CompteType.CompteCheque;
 
         // Constructeur avec paramètres correspondant aux noms des propriétés
-        public Compte(CompteType type, string numCompte, decimal solde, DateTime DateOuverture)
+        public Compte(ClientId id, OpérationId opérationId, CompteType type, string numCompte, decimal solde, DateTime DateOuverture)
         {
+            Id = CompteId.Of(Guid.NewGuid());
             Type = type;
             NumCompte = numCompte;
             Solde = solde;
             this.DateOuverture = DateOuverture;
         }
+
+        /*
         public string ConsulterCompte()
         {
             return $"ClientId: {ClientId}, NumCompte: {NumCompte}, Solde: {Solde}, DateOuverture: {DateOuverture}, Type:{Type}";
         }
-
+        */
 
       
 

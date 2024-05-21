@@ -25,7 +25,7 @@ namespace STBEverywhere.Domain.Models
             Status = status;
         }
 
-
+        /*
         public string ConsulterCarte()
         {
             return $"ClientId: {ClientId}, NumCarte: {NumCarte}, CodeSecretCarte: {CodeSecretCarte}, DateExpiration: {DateExpiration}, Solde: {Solde}, Status: {Status}, Type: {Type}";
@@ -41,7 +41,7 @@ namespace STBEverywhere.Domain.Models
 
         }
 
-
+        */
 
 
 
