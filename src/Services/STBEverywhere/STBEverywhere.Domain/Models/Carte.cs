@@ -4,7 +4,7 @@ using STBEverywhere.Domain.ValueObjects;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Carte : Aggregate<CarteId>
+    public class Carte : Entity<CarteId>
     {
         public ClientId ClientId { get; set; }
         public string NumCarte { get; set; } = null!;

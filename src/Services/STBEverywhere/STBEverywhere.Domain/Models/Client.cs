@@ -1,6 +1,6 @@
 ﻿namespace STBEverywhere.Domain.Models
 {
-    public class Client : Aggregate<ClientId>
+    public class Client : Entity<ClientId>
     {
 
         private readonly List<Compte> _comptes = new();
