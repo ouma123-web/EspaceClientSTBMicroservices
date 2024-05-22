@@ -15,7 +15,7 @@ namespace STBEverywhere.Domain.Models
         public CarteType Type { get; private set; } = CarteType.CarteElectronique;
 
         // Constructeur avec paramètres correspondant aux noms des propriétés
-        public Carte(CarteType type, string numCarte, decimal solde, decimal codeSecretCarte, DateOnly dateExpiration, CarteStatus status)
+       /* public Carte(CarteType type, string numCarte, decimal solde, decimal codeSecretCarte, DateOnly dateExpiration, CarteStatus status)
         {
             Type = type;
             NumCarte = numCarte;
@@ -23,7 +23,7 @@ namespace STBEverywhere.Domain.Models
             CodeSecretCarte = codeSecretCarte;
             DateExpiration = dateExpiration;
             Status = status;
-        }
+        }*/
 
         /*
         public string ConsulterCarte()

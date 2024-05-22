@@ -11,4 +11,14 @@
     <ProjectReference Include="..\STBEverywhere.Domain\STBEverywhere.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Clients\Commands\" />
+    <Folder Include="Clients\EventHandlers\" />
+    <Folder Include="Clients\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+  </ItemGroup>
+
 </Project>

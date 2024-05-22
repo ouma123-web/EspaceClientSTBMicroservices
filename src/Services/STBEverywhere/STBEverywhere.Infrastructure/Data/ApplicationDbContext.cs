@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using STBEverywhere.Application.Data;
 using STBEverywhere.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }

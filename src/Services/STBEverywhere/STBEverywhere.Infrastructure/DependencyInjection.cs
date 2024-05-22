@@ -2,13 +2,10 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using STBEverywhere.Application.Data;
 using STBEverywhere.Infrastructure.Data;
 using STBEverywhere.Infrastructure.Data.Interceptors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace STBEverywhere.Infrastructure
 {
@@ -32,7 +29,7 @@ namespace STBEverywhere.Infrastructure
                 options.UseSqlServer(connectionString);
             });
 
-            //services.AddScoped<IApplicationDbContext,ApplicationDbContext();
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
             return services;
         }
