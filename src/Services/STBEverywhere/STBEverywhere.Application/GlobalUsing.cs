@@ -1,12 +1,2 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace STBEverywhere.Application
-{
-    internal class GlobalUsing
-    {
-    }
-}
+﻿global using STBEverywhere.Domain.Models;
+global using STBEverywhere.Domain.ValueObjects;

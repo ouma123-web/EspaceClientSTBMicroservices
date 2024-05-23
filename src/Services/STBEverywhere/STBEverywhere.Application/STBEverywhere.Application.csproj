@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Clients\Commands\" />
     <Folder Include="Clients\EventHandlers\" />
     <Folder Include="Clients\Queries\" />
   </ItemGroup>
