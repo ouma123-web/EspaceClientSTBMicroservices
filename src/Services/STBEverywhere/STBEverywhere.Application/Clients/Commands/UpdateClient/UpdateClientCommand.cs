@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.CQRS;
+using FluentValidation;
 using STBEverywhere.Application.Dtos;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,15 @@ namespace STBEverywhere.Application.Clients.Commands.UpdateClient
     public record UpdateClientCommand(ClientDto Client)
         : ICommand<UpdateClientResult>;
 
-    public record UpdateClientResult(bool Is)
+    public record UpdateClientResult(bool IsSuccess);
 
+
+    public class UpdateClientCommandValidator : AbstractValidator<UpdateClientCommand>
+    {
+        public UpdateClientCommandValidator()
+        {
+            RuleFor(x => x.Client.Id).NotEmpty().WithMessage("Id is required");
+        }
+    }
 
 }

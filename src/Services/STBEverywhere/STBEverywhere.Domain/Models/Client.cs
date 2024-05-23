@@ -43,21 +43,15 @@
 
             client.AddDomainEvent(new ClientCreateEvent(client));
          return client;
-         }
+         }*/
         
 
 
         public void Update(string nom, string prenom, string email, int téléphone, string adresse)
         {
-            Nom = nom;
-            Prenom = prenom;
-            Email = email;
-            Téléphone = téléphone;
-            Adresse = adresse;
-
-            AddDomainEvent(new ClientUpdateEvent(this));
+            
         }
-
+        /*
         public void Add(OpérationId opérationId,string numcompte,DateTime dateouverture, decimal solde, CompteType type)
         {
             if (string.IsNullOrWhiteSpace(numcompte))

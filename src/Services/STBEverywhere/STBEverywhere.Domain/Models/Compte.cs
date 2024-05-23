@@ -12,7 +12,7 @@ using System.Reflection.Metadata;
 
 namespace STBEverywhere.Domain.Models
 {
-    public class Compte : Entity<CompteId>
+    public class Compte : Aggregate<CompteId>
     {
 
 
@@ -25,14 +25,34 @@ namespace STBEverywhere.Domain.Models
         public CompteType Type { get; private set; } = CompteType.CompteCheque;
 
         // Constructeur avec paramètres correspondant aux noms des propriétés
-        public Compte(ClientId id, OpérationId opérationId, CompteType type, string numCompte, decimal solde, DateTime DateOuverture)
+       /* public Compte(ClientId id, OpérationId opérationId, CompteType type, string numCompte, decimal solde, DateTime dateouverture)
         {
             Id = CompteId.Of(Guid.NewGuid());
             Type = type;
             NumCompte = numCompte;
             Solde = solde;
-            this.DateOuverture = DateOuverture;
+            this.DateOuverture = dateouverture;
         }
+       */
+
+        public static Compte Create(CompteId id, OpérationId opérationId, string numCompte, decimal solde, DateTime dateouverture)
+        {
+            var compte = new Compte
+            {
+                Id = id,
+                OpérationId = opérationId,
+                NumCompte = numCompte,
+                Solde = solde,
+                DateOuverture = dateouverture,
+                Type = CompteType.CompteEpargne           };
+
+           compte.AddDomainEvent(new CompteCreatedEvent(compte));
+
+            return compte;
+
+        }
+
+       
 
         /*
         public string ConsulterCompte()
@@ -41,7 +61,7 @@ namespace STBEverywhere.Domain.Models
         }
         */
 
-      
+
 
     }
 
