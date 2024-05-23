@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace STBEverywhere.Application.Dtos
 {
     public record ClientDto(
-        Guid Id,
+        Guid ClientId,
         string Nom,
         string Prenom,
         string Email,
         int Téléphone,
         string Adresse,
-        List<CarteDto> CarteDtos,
-        List<CompteDto> CompteDtos,
-        List<CreditClientDto> CreditClientDtos
+        List<CarteDto> Cartes,
+        List<CompteDto> Comptes,
+        List<CreditClientDto> CreditClients
         );
     
 }

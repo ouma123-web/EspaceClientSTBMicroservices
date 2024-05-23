@@ -12,39 +12,32 @@
 
         private readonly List<CreditClient> _creditclients = new();
         public IReadOnlyList<CreditClient> CreditClients => _creditclients.AsReadOnly();
-
-
-
-
-
-
-
-
        
 
-
+        public ClientId ClientId { get; set; }
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public int Téléphone { get; set; } = int.MaxValue;
         public string Adresse { get; set; } = string.Empty;
-        /*
-        public static Client Create(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
-         {
-         var client = new Client
-         {
-             Id = id,
-             Nom = nom,
-             Prenom = prenom,
-             Email = email,
-             Téléphone = téléphone,
-             Adresse = adresse
-         };
 
-            client.AddDomainEvent(new ClientCreateEvent(client));
-         return client;
-         }*/
-        
+        /*
+public static Client Create(ClientId id, string nom, string prenom, string email, int téléphone, string adresse)
+{
+var client = new Client
+{
+Id = id,
+Nom = nom,
+Prenom = prenom,
+Email = email,
+Téléphone = téléphone,
+Adresse = adresse
+};
+
+client.AddDomainEvent(new ClientCreateEvent(client));
+return client;
+}*/
+
 
 
         public void Update(string nom, string prenom, string email, int téléphone, string adresse)

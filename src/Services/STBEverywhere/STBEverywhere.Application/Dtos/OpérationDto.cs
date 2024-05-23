@@ -11,6 +11,6 @@ namespace STBEverywhere.Application.Dtos
         string Visualisation,
         decimal Montant,
         OpérationType Type,
-        List<CompteDto> CompteDtos
+        List<CompteDto> Comptes
         );
 }
