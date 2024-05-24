@@ -15,7 +15,7 @@ namespace STBEverywhere.Application.Clients.Queries.GetClients
         public async Task<GetClientsResult> Handle(GetClientsQuery query, CancellationToken cancellationToken)
         {
 
-            // get orders with pagination
+            // get client with pagination
             // return result
 
             var pageIndex = query.PaginationRequest.PageIndex;

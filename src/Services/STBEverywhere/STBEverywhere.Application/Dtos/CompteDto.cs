@@ -10,6 +10,7 @@ namespace STBEverywhere.Application.Dtos
     public record CompteDto(
         Guid ClientId,
         Guid OpérationId,
+        Guid CompteId,
         string NumCompte,
         decimal Solde,
         DateTime DateOuverture,

@@ -19,6 +19,7 @@ namespace STBEverywhere.Domain.Models
 
         public ClientId ClientId { get; set; }
         public OpérationId OpérationId { get; set; }
+        public CompteId CompteId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
         public DateTime DateOuverture { get; set; }
@@ -35,11 +36,11 @@ namespace STBEverywhere.Domain.Models
         }
        */
 
-        public static Compte Create(CompteId id, OpérationId opérationId, string numCompte, decimal solde, DateTime dateouverture)
+        public static Compte Create(CompteId compteId, OpérationId opérationId, string numCompte, decimal solde, DateTime dateouverture)
         {
             var compte = new Compte
             {
-                Id = id,
+                CompteId = compteId,
                 OpérationId = opérationId,
                 NumCompte = numCompte,
                 Solde = solde,
