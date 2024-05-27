@@ -12,13 +12,13 @@ namespace STBEverywhere.Application.Clients.Commands.UpdateClient
             //save to database
             //return result
 
-            var clientId = ClientId.Of(command.Client.ClientId);
+            var clientId = ClientId.Of(command.Client.Id);
             var client = await dbContext.Clients
                 .FindAsync([clientId], cancellationToken: cancellationToken);
 
             if (client is null)
             {
-                throw new ClientNotFoundException(command.Client.ClientId);
+                throw new ClientNotFoundException(command.Client.Id);
             }
 
 

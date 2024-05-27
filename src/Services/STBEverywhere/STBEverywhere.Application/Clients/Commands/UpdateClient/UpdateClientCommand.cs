@@ -19,7 +19,7 @@ namespace STBEverywhere.Application.Clients.Commands.UpdateClient
     {
         public UpdateClientCommandValidator()
         {
-            RuleFor(x => x.Client.ClientId).NotEmpty().WithMessage("Id is required");
+            RuleFor(x => x.Client.Id).NotEmpty().WithMessage("Id is required");
         }
     }
 

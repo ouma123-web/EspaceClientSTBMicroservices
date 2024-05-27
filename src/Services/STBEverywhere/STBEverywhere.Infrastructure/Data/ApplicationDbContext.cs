@@ -23,7 +23,7 @@ namespace STBEverywhere.Infrastructure.Data
       
         public DbSet<Opération> Opérations => Set<Opération>();
         public DbSet<Credit> Credits => Set<Credit>();
-        public DbSet<CreditClient> CreditClients => Set<CreditClient>();
+        public DbSet<ClientCredit> CreditClients => Set<ClientCredit>();
 
 
         protected override void OnModelCreating(ModelBuilder builder)

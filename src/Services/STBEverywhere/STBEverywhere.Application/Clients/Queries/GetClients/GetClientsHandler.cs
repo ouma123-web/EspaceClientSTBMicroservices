@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Application.Clients.Queries.GetClients
 {
+
     public class GetClientsHandler(IApplicationDbContext dbContext)
     : IQueryHandler<GetClientsQuery, GetClientsResult>
     {
@@ -27,6 +28,7 @@ namespace STBEverywhere.Application.Clients.Queries.GetClients
                                    .Include(c => c.Comptes)
                                    .Include(c => c.Cartes)
                                    .Include(c => c.CreditClients)
+                                   .OrderBy(c => c.Id.Value)
                                    .Skip(pageSize * pageIndex)
                                    .Take(pageSize)
                                    .ToListAsync(cancellationToken);

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace STBEverywhere.Application.Dtos
 {
     public record OpérationDto(
+        Guid Id,
         string Visualisation,
         decimal Montant,
         OpérationType Type,

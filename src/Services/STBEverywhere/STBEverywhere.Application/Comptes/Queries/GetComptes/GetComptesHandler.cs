@@ -24,7 +24,7 @@ namespace STBEverywhere.Application.Comptes.Queries.GetComptes
             var totalCount = await dbContext.Comptes.LongCountAsync(cancellationToken);
 
             var comptes = await dbContext.Comptes
-                      .OrderBy(co => co.CompteId.Value)
+                      .OrderBy(co => co.Id.Value)
                       .Skip(pageSize * pageIndex)
                       .Take(pageSize)
                       .ToListAsync(cancellationToken);

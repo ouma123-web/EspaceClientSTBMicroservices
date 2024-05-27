@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace STBEverywhere.Application.Dtos
 {
     public record ClientDto(
-        Guid ClientId,
+        Guid Id,
         string Nom,
         string Prenom,
         string Email,

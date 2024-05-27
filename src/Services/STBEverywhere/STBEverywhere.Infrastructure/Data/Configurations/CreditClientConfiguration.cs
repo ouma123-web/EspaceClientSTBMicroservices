@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Infrastructure.Data.Configurations
 {
-    public class CreditClientConfiguration : IEntityTypeConfiguration<CreditClient>
+    public class CreditClientConfiguration : IEntityTypeConfiguration<ClientCredit>
     {
-        public void Configure(EntityTypeBuilder<CreditClient> builder)
+        public void Configure(EntityTypeBuilder<ClientCredit> builder)
         {
 
 

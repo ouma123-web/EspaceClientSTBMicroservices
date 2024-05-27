@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Clients\EventHandlers\" />
+    <Folder Include="Cartes\Queries\GetCartesByClient\" />
+    <Folder Include="CreditClients\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

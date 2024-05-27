@@ -4,3 +4,7 @@ global using BuildingBlocks.CQRS;
 global using STBEverywhere.Application.Data;
 global using STBEverywhere.Application.Dtos;
 global using STBEverywhere.Application.Exceptions;
+global using MediatR;
+global using Microsoft.Extensions.Logging;
+global using STBEverywhere.Domain.Events;
+global using Microsoft.EntityFrameworkCore;

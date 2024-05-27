@@ -12,7 +12,7 @@ namespace STBEverywhere.Application.Extensions
         public static IEnumerable<CompteDto> ToCompteDtoList(this IEnumerable<Compte> comptes)
         {
             return comptes.Select(compte => new CompteDto(
-                CompteId: compte.Id.Value,
+                Id: compte.Id.Value,
                 ClientId: compte.ClientId.Value,
                 OpérationId: compte.CompteId.Value,
                 NumCompte: compte.NumCompte,
@@ -22,7 +22,7 @@ namespace STBEverywhere.Application.Extensions
                 ));
         }
 
-        public static CompteDto ToOrderDto(this Compte compte)
+        public static CompteDto ToCompteDto(this Compte compte)
         {
             return DtoFromCompte(compte);
         }
@@ -31,7 +31,7 @@ namespace STBEverywhere.Application.Extensions
         private static CompteDto DtoFromCompte(Compte compte)
         {
             return new CompteDto(
-                         CompteId: compte.Id.Value,
+                Id: compte.Id.Value,
                 ClientId: compte.ClientId.Value,
                 OpérationId: compte.CompteId.Value,
                 NumCompte: compte.NumCompte,

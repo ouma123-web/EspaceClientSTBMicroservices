@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace STBEverywhere.Application.Dtos
 {
     public record CreditDto(
+        Guid Id,
         string Code,
         decimal MaxMontant,
         string MaxDuree,

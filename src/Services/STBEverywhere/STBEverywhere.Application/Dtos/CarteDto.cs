@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace STBEverywhere.Application.Dtos
 {
     public record CarteDto(
+        Guid Id,
         Guid ClientId,
         string NumCarte,
         decimal Solde,

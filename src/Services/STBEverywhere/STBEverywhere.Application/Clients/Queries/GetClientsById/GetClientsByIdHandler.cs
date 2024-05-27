@@ -16,7 +16,7 @@ namespace STBEverywhere.Application.Clients.Queries.GetClientsById
                 .Include(c => c.CreditClients)
                 .AsNoTracking()
                // .Where(c => c.ClientId.Value.Contains(query.Id))
-                .OrderBy(c => c.ClientId.Value)
+                .OrderBy(c => c.Id.Value)
                 .ToListAsync(cancellationToken);
 
 

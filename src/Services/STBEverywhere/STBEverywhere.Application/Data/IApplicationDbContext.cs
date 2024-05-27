@@ -15,7 +15,7 @@ namespace STBEverywhere.Application.Data
         DbSet<Carte> Cartes { get; }
         DbSet<Opération> Opérations { get; }
         DbSet<Credit> Credits { get; }
-        DbSet<CreditClient> CreditClients { get; }
+        DbSet<ClientCredit> CreditClients { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
