@@ -4,7 +4,9 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "stbeverywhere.api": "StartDebugging"
+        "stbeverywhere.api": "StartDebugging",
+        "emailservice.api": "StartDebugging",
+        "smsnotifaction": "StartDebugging"
       }
     }
   }

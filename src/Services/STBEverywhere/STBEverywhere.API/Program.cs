@@ -1,4 +1,6 @@
 
+using Common.Logging;
+using Serilog;
 using STBEverywhere.API;
 using STBEverywhere.Application;
 using STBEverywhere.Infrastructure;
@@ -9,14 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddApplicationServices()
     .AddInfrastructureServices(builder.Configuration)
-    .AddApiServices();
+    .AddApiServices(builder.Configuration);
     
 
 
 
 var app = builder.Build();
 
-
+app.UseSerilogRequestLogging();
 
 // app.MapGet("/", () => "Hello World!");
 
