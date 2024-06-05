@@ -17,16 +17,20 @@
 	  <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0" />
 	  <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
-		
-      <PrivateAssets>all</PrivateAssets>
+
+
+		<PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
-    <ProjectReference Include="..\STBEverywhere.Application\STBEverywhere.Application.csproj" />
+
+	  <ProjectReference Include="..\..\..\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
+
+	  <ProjectReference Include="..\STBEverywhere.Application\STBEverywhere.Application.csproj" />
     <ProjectReference Include="..\STBEverywhere.Infrastructure\STBEverywhere.Infrastructure.csproj" />
   </ItemGroup>
 

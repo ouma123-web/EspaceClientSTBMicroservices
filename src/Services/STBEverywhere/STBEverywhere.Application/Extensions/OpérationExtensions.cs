@@ -13,7 +13,7 @@ namespace STBEverywhere.Application.Extensions
                 Visualisation: opération.Visualisation,
                 Montant: opération.Montant,
                 Type: opération.Type,
-                Comptes: opération.Comptes.Select(o => new CompteDto(o.OpérationId.Value, o.ClientId.Value, o.CompteId.Value, o.NumCompte, o.Solde, o.DateOuverture, o.Type)).ToList()
+                Comptes: opération.Comptes.Select(o => new CompteDto(o.OpérationId.Value, o.ClientId.Value, o.Id.Value, o.NumCompte, o.Solde, o.DateOuverture, o.Type)).ToList()
                 ));
 
         }
@@ -31,7 +31,7 @@ namespace STBEverywhere.Application.Extensions
                 Visualisation: opération.Visualisation,
                 Montant: opération.Montant,
                 Type: opération.Type,
-                Comptes: opération.Comptes.Select(o => new CompteDto(o.OpérationId.Value, o.ClientId.Value, o.CompteId.Value, o.NumCompte, o.Solde, o.DateOuverture, o.Type)).ToList()
+                Comptes: opération.Comptes.Select(o => new CompteDto(o.OpérationId.Value, o.ClientId.Value, o.Id.Value, o.NumCompte, o.Solde, o.DateOuverture, o.Type)).ToList()
 
                 );
         }

@@ -39,12 +39,16 @@ namespace STBEverywhere.Infrastructure.Data.Configurations
 
 
             builder.Property(cr => cr.Type)
-            .HasDefaultValue(CreditType.Accepter)
+            .HasDefaultValue(CreditType.CréditAuto)
             .HasConversion(
                 s => s.ToString(),
                 dbStatus => (CreditType)Enum.Parse(typeof(CreditType), dbStatus));
 
-
+            builder.Property(cr => cr.Status)
+                .HasDefaultValue(CreditStatus.Accepter)
+                .HasConversion(
+                    s => s.ToString(),
+                    dbStatus => (CreditStatus)Enum.Parse(typeof(CreditStatus), dbStatus));
 
         }
     }

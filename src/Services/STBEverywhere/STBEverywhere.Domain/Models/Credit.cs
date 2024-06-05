@@ -19,17 +19,11 @@ namespace STBEverywhere.Domain.Models
         public decimal MaxMontant { get; set; }
         public string MaxDuree { get; set; }
 
-        public CreditType Type { get; set; } = CreditType.Accepter;
+        public CreditType Type { get; set; } = CreditType.CréditAuto;
 
-       /* public Credit(CreditId creditId, CreditType type, string code, decimal maxMontant, string maxDuree)
-        {
-            Type = type;
-            Code = code;
-            MaxMontant = maxMontant;
-            MaxDuree = maxDuree;
+        public CreditStatus Status { get; set; } = CreditStatus.Accepter;
 
-        }
-       */
+       
 
         public static Credit Create(CreditId creditId,  string code, decimal maxmontant, string maxduree)
         {
@@ -39,7 +33,9 @@ namespace STBEverywhere.Domain.Models
                 Code = code,
                 MaxMontant = maxmontant,
                 MaxDuree = maxduree, 
-                Type = CreditType.Accepter
+                Type = CreditType.CréditAuto,
+                Status = CreditStatus.Accepter
+
             };
 
             credit.AddDomainEvent(new CreditCreatedEvent(credit));

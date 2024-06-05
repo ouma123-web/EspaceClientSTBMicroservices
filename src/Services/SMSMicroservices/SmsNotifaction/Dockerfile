@@ -9,10 +9,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["SmsNotifaction/SmsNotifaction.csproj", "SmsNotifaction/"]
-RUN dotnet restore "./SmsNotifaction/./SmsNotifaction.csproj"
+COPY ["Services/SMSMicroservices/SmsNotifaction/SmsNotifaction.csproj", "Services/SMSMicroservices/SmsNotifaction/"]
+RUN dotnet restore "./Services/SMSMicroservices/SmsNotifaction/SmsNotifaction.csproj"
 COPY . .
-WORKDIR "/src/SmsNotifaction"
+WORKDIR "/src/Services/SMSMicroservices/SmsNotifaction"
 RUN dotnet build "./SmsNotifaction.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

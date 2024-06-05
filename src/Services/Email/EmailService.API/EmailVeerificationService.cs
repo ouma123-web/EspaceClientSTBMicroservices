@@ -2,7 +2,6 @@
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
 using System.Net.Mail;
-using Common.Logging;
 using Serilog;
 
 namespace EmailService.API

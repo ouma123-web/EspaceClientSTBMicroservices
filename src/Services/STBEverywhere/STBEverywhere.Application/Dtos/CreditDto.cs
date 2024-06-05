@@ -13,5 +13,6 @@ namespace STBEverywhere.Application.Dtos
         decimal MaxMontant,
         string MaxDuree,
         CreditType Type,
+        CreditStatus Status,
         List<CreditClientDto> CreditClients);
 }

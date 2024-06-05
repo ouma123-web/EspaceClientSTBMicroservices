@@ -1,11 +1,11 @@
-using Common.Logging;
+
 using EmailService.API;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Serilog;
+//using HealthChecks.UI.Client;
+//using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog(SeriLogger.Configure);
+
 
 
 
@@ -18,19 +18,19 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<EmailVerificationService>() ;
 
-builder.Services.AddHealthChecks();
+//builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
-app.UseAuthorization();
-app.UseSerilogRequestLogging();
+
+
 
 // Get the EmailVerificationService instance from the DI container
 var emailVerificationService = app.Services.GetRequiredService<EmailVerificationService>();
@@ -40,10 +40,10 @@ emailVerificationService.StartListening(numOfConsumers: 3);
 
 app.MapControllers();
 
-app.MapHealthChecks("/hc", new HealthCheckOptions()
-{
-    Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
+//app.MapHealthChecks("/hc", new HealthCheckOptions()
+//{
+//    Predicate = _ => true,
+//    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+//});
 
 app.Run();

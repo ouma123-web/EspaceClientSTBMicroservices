@@ -14,7 +14,7 @@ namespace STBEverywhere.Application.Extensions
             return comptes.Select(compte => new CompteDto(
                 Id: compte.Id.Value,
                 ClientId: compte.ClientId.Value,
-                OpérationId: compte.CompteId.Value,
+                OpérationId: compte.OpérationId.Value,
                 NumCompte: compte.NumCompte,
                 Solde: compte.Solde,
                 DateOuverture: compte.DateOuverture,
@@ -33,7 +33,7 @@ namespace STBEverywhere.Application.Extensions
             return new CompteDto(
                 Id: compte.Id.Value,
                 ClientId: compte.ClientId.Value,
-                OpérationId: compte.CompteId.Value,
+                OpérationId: compte.OpérationId.Value,
                 NumCompte: compte.NumCompte,
                 Solde: compte.Solde,
                 DateOuverture: compte.DateOuverture,

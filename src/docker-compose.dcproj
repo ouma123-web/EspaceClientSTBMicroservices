@@ -4,7 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>16f2d86a-b669-4b82-b14a-d75d29cd761d</ProjectGuid>
+    <ProjectGuid>da1ac658-3419-4aae-8313-7b33d04e383b</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>stbeverywhere.api</DockerServiceName>

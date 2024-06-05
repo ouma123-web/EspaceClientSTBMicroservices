@@ -1,10 +1,25 @@
 ﻿
 
+using Microsoft.AspNetCore.Connections;
+using Microsoft.EntityFrameworkCore.Metadata;
+using RabbitMQ.Client;
+using STBEverywhere.Domain.Models;
+using System.Text;
+using System.Threading.Channels;
+using IModel = RabbitMQ.Client.IModel;
+
 namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
 {
     public class CreateCompteHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateCompteCommand, CreateCompteResult>
     {
+        private readonly IModel _channel;
+
+
+       /* public CreateCompteHandler(RabbitMQService rabbitMQService)
+        {
+            _channel = rabbitMQService.GetChannel();
+        }*/
 
         public async Task<CreateCompteResult> Handle(CreateCompteCommand command, CancellationToken cancellationToken)
         {
@@ -16,6 +31,17 @@ namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
 
             dbContext.Comptes.Add(compte);
             await dbContext.SaveChangesAsync(cancellationToken);
+
+            // get client by id client
+            Client c1 = new Client();
+            c1 = dbContext.Clients.FirstOrDefault(c => c.Id == compte.ClientId);
+
+            var message = $"{c1.Email},{compte.Id}";
+            var body = Encoding.UTF8.GetBytes(message);
+            _channel.BasicPublish(exchange: "", routingKey: "registration_queue", basicProperties: null, body: body);
+            Console.WriteLine($"Sent message: {message}");
+
+
 
             return new CreateCompteResult(compte.Id.Value);
         }
@@ -36,5 +62,31 @@ namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
             return newCompte;
         }
 
+    }
+
+
+
+    public class RabbitMQService : IDisposable
+    {
+        private readonly IModel _channel;
+
+        public RabbitMQService()
+        {
+            var factory = new ConnectionFactory
+            {
+                HostName = "rabbitmq",
+                UserName = "guest",
+                Password = "guest"
+            };
+            var connection = factory.CreateConnection();
+            _channel = connection.CreateModel();
+        }
+
+        public void Dispose()
+        {
+            _channel?.Dispose();
+        }
+
+        public IModel GetChannel() => _channel;
     }
 }

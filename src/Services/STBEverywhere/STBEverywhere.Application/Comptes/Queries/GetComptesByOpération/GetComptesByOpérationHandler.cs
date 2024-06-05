@@ -20,7 +20,7 @@ namespace STBEverywhere.Application.Comptes.Queries.GetComptesByOpération
             var comptes = await dbContext.Comptes
                             .AsNoTracking()
                             .Where(co => co.OpérationId == OpérationId.Of(query.OpérationId))
-                            .OrderBy(co => co.CompteId.Value)
+                            .OrderBy(co => co.Id.Value)
                             .ToListAsync(cancellationToken);
 
             return new GetComptesByOpérationResult(comptes.ToCompteDtoList());

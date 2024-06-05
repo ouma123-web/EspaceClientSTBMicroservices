@@ -9,6 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Email/EmailService.API/EmailService.API.csproj", "Services/Email/EmailService.API/"]
+COPY ["BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "BuildingBlocks/BuildingBlocks/"]
 RUN dotnet restore "./Services/Email/EmailService.API/EmailService.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Email/EmailService.API"

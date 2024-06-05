@@ -1,56 +1,21 @@
 version: '3.4'
 
 services:
-
-
-  
-
-  stbeverywhereespaceclientdb:
-    container_name: StbEverywhereEspaceClientdb
-    environment: 
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=SwN12345678
-    restart: always
-    ports: 
-      - "1433:1433"
-    volumes:
-      - sqlserverdata:/var/opt/mssql
-    
-  
-
-  
-  stbeverywhereapi:
+  stbeverywhere.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=stbeverywhereespaceclientdb;Database=STBEverywhereEspaceClient;User Id=sa;Password=SwN12345678;Encrypt=False;TrustServerCertificate=True
-      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-
-    depends_on:
-      - stbeverywhereespaceclientdb
-    restart: always
+ 
     ports:
-      - "6003:8080"
-      - "6063:8081"
+      - "8080"
+      - "8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
 
-
-
-
-
-   
-  
-
-
-
-
-
-
- 
   emailservice.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -71,37 +36,42 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
+  stbeverywhereespaceclientdb:
+    container_name: StbEverywhereEspaceClientdb
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=SwN12345678
+    restart: always
+    ports: 
+      - "1434:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql
 
   rabbitmq:
     container_name: RabbitMQ
     restart: always
     ports:
-        - "5672:5672"
-        - "15672:15672"
- 
+      - "5672:5672"
+      - "15672:15672"
 
   elasticsearch:
     container_name: elasticsearch
     restart: always
     environment:
-        - xpack.monitoring.collection.enabled
-        - xpack.watcher.enabled=false
-        - xpack.security.enabled=false
-        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-        - discovery.type=single-node
+      - xpack.monitoring.collection.enabled
+      - xpack.watcher.enabled=false
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
     ports:
-        - "9200:9200"
-    volumes:
-        - elasticsearch-data:/usr/share/elasticsearch/data  
-
-
+      - "9200:9200"
 
   kibana:
     container_name: kibana
     restart: always
     environment:        
-        - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
-        - elasticsearch
+      - elasticsearch
     ports:
-        - "5601:5601"
+      - "5601:5601"

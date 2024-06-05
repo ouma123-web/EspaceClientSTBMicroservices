@@ -17,6 +17,7 @@ namespace STBEverywhere.Application.Extensions
                 MaxMontant: credit.MaxMontant,
                 MaxDuree: credit.MaxDuree,
                 Type: credit.Type,
+                Status: credit.Status,
                 CreditClients: credit.CreditClients.Select(ccl => new CreditClientDto(ccl.Id.Value, ccl.ClientId.Value, ccl.CreditId.Value, ccl.DateDeblocage, ccl.MontantDebloquer)).ToList()
                 ));
         }
@@ -34,6 +35,7 @@ namespace STBEverywhere.Application.Extensions
                 MaxMontant: credit.MaxMontant,
                 MaxDuree: credit.MaxDuree,
                 Type: credit.Type,
+                Status: credit.Status,
                 CreditClients: credit.CreditClients.Select(ccl => new CreditClientDto(ccl.Id.Value, ccl.ClientId.Value, ccl.CreditId.Value, ccl.DateDeblocage, ccl.MontantDebloquer)).ToList()
 
 

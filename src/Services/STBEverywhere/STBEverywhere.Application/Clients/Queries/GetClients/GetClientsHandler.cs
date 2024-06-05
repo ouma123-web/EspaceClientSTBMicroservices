@@ -28,10 +28,11 @@ namespace STBEverywhere.Application.Clients.Queries.GetClients
                                    .Include(c => c.Comptes)
                                    .Include(c => c.Cartes)
                                    .Include(c => c.CreditClients)
-                                   .OrderBy(c => c.Id.Value)
+                                   
                                    .Skip(pageSize * pageIndex)
                                    .Take(pageSize)
                                    .ToListAsync(cancellationToken);
+
 
             return new GetClientsResult(
                 new PaginatedResult<ClientDto>(

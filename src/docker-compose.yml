@@ -1,56 +1,41 @@
 version: '3.4'
 
 services:
- 
-
-
-  stbeverywhereapi:
+  stbeverywhere.api:
     image: ${DOCKER_REGISTRY-}stbeverywhereapi
     build:
       context: .
       dockerfile: Services/STBEverywhere/STBEverywhere.API/Dockerfile
 
-
-
-  stbeverywhereespaceclientdb:
-    image: mcr.microsoft.com/mssql/server
-
-
- 
   emailservice.api:
     image: ${DOCKER_REGISTRY-}emailserviceapi
     build:
       context: .
       dockerfile: Services/Email/EmailService.API/Dockerfile
+    restart: always
 
 
   smsnotifaction:
     image: ${DOCKER_REGISTRY-}smsnotifaction
     build:
-      context: Desktop/EspaceClientSTBMicroservices/src
-      dockerfile: ../../../Services/SMS/SmsNotifaction-main/src/SMSMicroservices/SmsNotifaction/Dockerfile
+      context: .
+      dockerfile: Services/SMSMicroservices/SmsNotifaction/Dockerfile
+    restart: always
 
-
+  stbeverywhereespaceclientdb:
+    image: mcr.microsoft.com/mssql/server
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
-
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
-
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.12.2
 
-
-  healthcheck:
-    image: ${DOCKER_REGISTRY-}healthcheck
-    build:
-      context: .
-      dockerfile: HealthCheck/HealthCheck/Dockerfile
-
-
 volumes:
   elasticsearch-data:
-  sqlserverdata: 
+  sqlserverdata:
+
+

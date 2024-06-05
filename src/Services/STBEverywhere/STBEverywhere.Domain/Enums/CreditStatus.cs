@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace STBEverywhere.Domain.Enums
 {
-    public enum CreditType
+    public enum CreditStatus
     {
-        CréditAuto,
-        CréditImmobilier,
-        CréditConsommation,
-        CréditTravaux,
-        CréditProfessionnel
+        Accepter,
+        Refuser
     }
 }

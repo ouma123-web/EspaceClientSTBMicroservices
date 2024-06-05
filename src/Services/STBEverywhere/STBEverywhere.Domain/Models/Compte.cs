@@ -10,7 +10,6 @@ namespace STBEverywhere.Domain.Models
 
         public OpérationId OpérationId { get; set; }
         public ClientId ClientId { get; set; }
-        public CompteId CompteId { get; set; }
         public string NumCompte { get; set; } = string.Empty;
         public decimal Solde { get; set; }
         public DateTime DateOuverture { get; set; }
@@ -21,7 +20,7 @@ namespace STBEverywhere.Domain.Models
             var compte = new Compte
             {
                 ClientId = clientId,
-                CompteId = compteId,
+                Id = compteId,
                 OpérationId = opérationId,
                 NumCompte = numCompte,
                 Solde = solde,

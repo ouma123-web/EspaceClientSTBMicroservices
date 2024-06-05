@@ -16,11 +16,11 @@ builder.Services.AddTransient<ISMSService, SMSService>();
 var app = builder.Build();
 
 // Configurez le pipeline de requête HTTP
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

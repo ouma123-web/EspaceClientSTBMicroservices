@@ -13,7 +13,7 @@ namespace STBEverywhere.Application.Extensions
                 Email: client.Email,
                 Téléphone: client.Téléphone,
                 Adresse: client.Adresse,
-                Comptes: client.Comptes.Select(co => new CompteDto(co.CompteId.Value, co.ClientId.Value, co.OpérationId.Value, co.NumCompte, co.Solde, co.DateOuverture,co.Type)).ToList(),
+                Comptes: client.Comptes.Select(co => new CompteDto(co.Id.Value, co.ClientId.Value, co.OpérationId.Value, co.NumCompte, co.Solde, co.DateOuverture,co.Type)).ToList(),
                 Cartes: client.Cartes.Select(ca => new CarteDto(ca.Id.Value, ca.ClientId.Value, ca.NumCarte, ca.Solde, ca.CodeSecretCarte, ca.DateExpiration, ca.Status, ca.Type)).ToList(),
                 CreditClients: client.CreditClients.Select(ccl => new CreditClientDto(ccl.Id.Value, ccl.ClientId.Value, ccl.CreditId.Value, ccl.DateDeblocage, ccl.MontantDebloquer)).ToList()
                 ));
@@ -33,7 +33,7 @@ namespace STBEverywhere.Application.Extensions
                 Email: client.Email,
                 Téléphone: client.Téléphone,
                 Adresse: client.Adresse,
-                Comptes: client.Comptes.Select(co => new CompteDto(co.CompteId.Value, co.ClientId.Value, co.OpérationId.Value, co.NumCompte, co.Solde, co.DateOuverture, co.Type)).ToList(),
+                Comptes: client.Comptes.Select(co => new CompteDto(co.Id.Value, co.ClientId.Value, co.OpérationId.Value, co.NumCompte, co.Solde, co.DateOuverture, co.Type)).ToList(),
                 Cartes: client.Cartes.Select(ca => new CarteDto(ca.Id.Value, ca.ClientId.Value, ca.NumCarte, ca.Solde, ca.CodeSecretCarte, ca.DateExpiration, ca.Status, ca.Type)).ToList(),
                 CreditClients: client.CreditClients.Select(ccl => new CreditClientDto(ccl.Id.Value, ccl.ClientId.Value, ccl.CreditId.Value, ccl.DateDeblocage, ccl.MontantDebloquer)).ToList()
                  );
