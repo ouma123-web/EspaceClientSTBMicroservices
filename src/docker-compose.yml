@@ -7,6 +7,9 @@ services:
       context: .
       dockerfile: Services/STBEverywhere/STBEverywhere.API/Dockerfile
 
+  stbeverywhereespaceclientdb:
+    image: mcr.microsoft.com/mssql/server
+
   emailservice.api:
     image: ${DOCKER_REGISTRY-}emailserviceapi
     build:
@@ -21,9 +24,6 @@ services:
       context: .
       dockerfile: Services/SMSMicroservices/SmsNotifaction/Dockerfile
     restart: always
-
-  stbeverywhereespaceclientdb:
-    image: mcr.microsoft.com/mssql/server
 
   rabbitmq:
     image: rabbitmq:3-management-alpine

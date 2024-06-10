@@ -12,9 +12,9 @@ namespace STBEverywhere.API.Endpoints
             {
                 var result = await sender.Send(new GetClientsQuery(request));
 
-                var response = result.Adapt<GetClientsResponse>();
+              //  var response = result.Cliens.Adapt<GetClientsResponse>();
 
-                return Results.Ok(response);
+                return Results.Ok(result.Cliens);
 
             })
         .WithName("GetClients")
