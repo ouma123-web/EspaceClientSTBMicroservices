@@ -2,7 +2,9 @@
 
 using Microsoft.AspNetCore.Connections;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RabbitMQ.Client;
+using STBEverywhere.Application.Data;
 using STBEverywhere.Domain.Models;
 using System.Text;
 using System.Threading.Channels;
@@ -10,16 +12,17 @@ using IModel = RabbitMQ.Client.IModel;
 
 namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
 {
-    public class CreateCompteHandler(IApplicationDbContext dbContext)
-    : ICommandHandler<CreateCompteCommand, CreateCompteResult>
+    public class CreateCompteHandler : ICommandHandler<CreateCompteCommand, CreateCompteResult>
     {
         private readonly IModel _channel;
+        private readonly IApplicationDbContext applicationDbContext;
 
 
-       /* public CreateCompteHandler(RabbitMQService rabbitMQService)
+        public CreateCompteHandler(IApplicationDbContext dbContext, RabbitMQService rabbitMQService)
         {
+            applicationDbContext = dbContext;
             _channel = rabbitMQService.GetChannel();
-        }*/
+        }
 
         public async Task<CreateCompteResult> Handle(CreateCompteCommand command, CancellationToken cancellationToken)
         {
@@ -29,14 +32,14 @@ namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
 
             var compte = CreateNewCompte(command.Compte);
 
-            dbContext.Comptes.Add(compte);
-            await dbContext.SaveChangesAsync(cancellationToken);
+            applicationDbContext.Comptes.Add(compte);
+            await applicationDbContext.SaveChangesAsync(cancellationToken);
 
             // get client by id client
             Client c1 = new Client();
-            c1 = dbContext.Clients.FirstOrDefault(c => c.Id == compte.ClientId);
+            c1 = applicationDbContext.Clients.FirstOrDefault(c => c.Id == compte.ClientId);
 
-            var message = $"{c1.Email},{compte.Id}";
+            var message = $"{c1.Email},{compte.ClientId}";
             var body = Encoding.UTF8.GetBytes(message);
             _channel.BasicPublish(exchange: "", routingKey: "registration_queue", basicProperties: null, body: body);
             Console.WriteLine($"Sent message: {message}");

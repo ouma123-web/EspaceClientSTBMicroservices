@@ -13,9 +13,9 @@ namespace STBEverywhere.API.Endpoints
             {
                 var result = await sender.Send(new GetComptesQuery(request));
 
-                var response = result.Adapt<GetComptesResponse>();
+                //var response = result.Adapt<GetComptesResponse>();
 
-                return Results.Ok(response);
+                return Results.Ok(result.Comptes);
 
             })
 
