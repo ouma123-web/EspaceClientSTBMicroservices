@@ -14,7 +14,7 @@ namespace STBEverywhere.API.Endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/comptes", async(CreateCompteRequest request, ISender sender) =>
+            app.MapPost("/compte", async(CreateCompteRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateCompteCommand>();
 
@@ -22,7 +22,7 @@ namespace STBEverywhere.API.Endpoints
 
                 var response = result.Adapt<CreateCompteResponse>();
 
-                return Results.Created($"/comptes/{response.Id}", response);
+                return Results.Created($"/compte/{response.Id}", response);
             })
 
         .WithName("CreateCompte")
