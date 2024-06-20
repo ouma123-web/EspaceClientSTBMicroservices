@@ -21,7 +21,6 @@ namespace STBEverywhere.Application.Opérations.Queries.GetOpérations
 
             var opérations = await dbContext.Opérations
                       .Include(o => o.Comptes)
-                      .OrderBy(o => o.Id.Value)
                       .Skip(pageSize * pageIndex)
                       .Take(pageSize)
                       .ToListAsync(cancellationToken);
