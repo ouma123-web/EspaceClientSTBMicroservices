@@ -10,7 +10,7 @@ namespace STBEverywhere.API.Endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/opération", async(CreateCreditRequest request, ISender sender) =>
+            app.MapPost("/crédit", async(CreateCreditRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateCreditCommand>();
 
@@ -18,14 +18,14 @@ namespace STBEverywhere.API.Endpoints
 
                 var response = result.Adapt<CreateCreditResponse>();
 
-                return Results.Created($"/opération/{response.Id}", response);
+                return Results.Created($"/crédit/{response.Id}", response);
             })
 
-        .WithName("CreateOpération")
+        .WithName("CreateCrédit")
         .Produces<CreateCreditResponse>(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
-        .WithSummary("Create Opération")
-        .WithDescription("Create Opération");
+        .WithSummary("Create Crédit")
+        .WithDescription("Create Crédit");
         }
     }
 }

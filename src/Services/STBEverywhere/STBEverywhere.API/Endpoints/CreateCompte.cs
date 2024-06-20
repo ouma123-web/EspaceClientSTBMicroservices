@@ -20,9 +20,9 @@ namespace STBEverywhere.API.Endpoints
 
                 var result = await sender.Send(command);
 
-                var response = result.Adapt<CreateCompteResponse>();
+              //  var response = result.Adapt<CreateCompteResponse>();
 
-                return Results.Created($"/compte/{response.Id}", response);
+                return Results.Created($"/compte/{result.Id}", result);
             })
 
         .WithName("CreateCompte")

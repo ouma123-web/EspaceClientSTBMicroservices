@@ -1,11 +1,7 @@
 ﻿using BuildingBlocks.Pagination;
 using Microsoft.EntityFrameworkCore;
 using STBEverywhere.Application.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace STBEverywhere.Application.Crédits.Queries.GetCrédits
 {
@@ -21,9 +17,20 @@ namespace STBEverywhere.Application.Crédits.Queries.GetCrédits
 
             var totalCount = await dbContext.Credits.LongCountAsync(cancellationToken);
 
+            if (totalCount == 0)
+            {
+              var  credit = new List<Credit>();
+
+                return new GetCreditResult(
+              new PaginatedResult<CreditDto>(
+              pageIndex,
+              pageSize,
+              totalCount,
+              credit.ToCreditDtoList()));
+            }
+
             var credits = await dbContext.Credits
                        .Include(cr => cr.CreditClients)
-                       .OrderBy(cr => cr.Id.Value)
                        .Skip(pageSize * pageIndex)
                        .Take(pageSize)
                        .ToListAsync(cancellationToken);
