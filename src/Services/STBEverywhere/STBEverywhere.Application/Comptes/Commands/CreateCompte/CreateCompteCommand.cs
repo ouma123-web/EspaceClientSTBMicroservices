@@ -13,7 +13,7 @@ namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
     {
         public CreateCompteCommandValidator()
         {
-            RuleFor(x => x.Compte.OpérationId).NotNull().WithMessage("OpérationId is required");
+           // RuleFor(x => x.Compte.OpérationId).NotNull().WithMessage("OpérationId is required");
         }
     }
 

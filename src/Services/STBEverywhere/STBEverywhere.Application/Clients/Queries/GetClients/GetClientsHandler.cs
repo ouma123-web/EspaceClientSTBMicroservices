@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Pagination;
+﻿using BuildingBlocks.CQRS;
+using BuildingBlocks.Pagination;
 using Microsoft.EntityFrameworkCore;
 using STBEverywhere.Application.Extensions;
 using System;
@@ -13,6 +14,8 @@ namespace STBEverywhere.Application.Clients.Queries.GetClients
     public class GetClientsHandler(IApplicationDbContext dbContext)
     : IQueryHandler<GetClientsQuery, GetClientsResult>
     {
+
+
         public async Task<GetClientsResult> Handle(GetClientsQuery query, CancellationToken cancellationToken)
         {
 

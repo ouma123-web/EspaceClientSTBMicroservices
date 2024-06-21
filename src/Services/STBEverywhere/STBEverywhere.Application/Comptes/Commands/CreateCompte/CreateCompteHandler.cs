@@ -12,7 +12,8 @@ using IModel = RabbitMQ.Client.IModel;
 
 namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
 {
-    public class CreateCompteHandler : ICommandHandler<CreateCompteCommand, CreateCompteResult>
+    public class CreateCompteHandler 
+        : ICommandHandler<CreateCompteCommand, CreateCompteResult>
     {
         private readonly IModel _channel;
         private readonly IApplicationDbContext applicationDbContext;
@@ -29,24 +30,36 @@ namespace STBEverywhere.Application.Comptes.Commands.CreateCompte
             //create COMPTE entity from command object
             //save to database
             //return result 
-
             var compte = CreateNewCompte(command.Compte);
+            try
+            {
 
             applicationDbContext.Comptes.Add(compte);
             await applicationDbContext.SaveChangesAsync(cancellationToken);
 
-            // get client by id client
-            Client c1 = new Client();
-            c1 = applicationDbContext.Clients.FirstOrDefault(c => c.Id == compte.ClientId);
+                // get client by id client
+                Client c1 = new Client();
+                c1 = applicationDbContext.Clients.FirstOrDefault(c => c.Id == compte.ClientId);
 
-            var message = $"{c1.Email},{compte.ClientId}";
-            var body = Encoding.UTF8.GetBytes(message);
-            _channel.BasicPublish(exchange: "", routingKey: "registration_queue", basicProperties: null, body: body);
-            Console.WriteLine($"Sent message: {message}");
+                var message = $"{c1.Email},{compte.ClientId}";
+                var body = Encoding.UTF8.GetBytes(message);
+                _channel.BasicPublish(exchange: "", routingKey: "registration_queue", basicProperties: null, body: body);
+                Console.WriteLine($"Sent message: {message}");
+
+                return new CreateCompteResult(compte.Id.Value);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+                return new CreateCompteResult(compte.Id.Value);
+            }
+
+       
 
 
 
-            return new CreateCompteResult(compte.Id.Value);
+
         }
 
         private Compte CreateNewCompte(CompteDto compteDto)

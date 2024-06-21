@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-
 namespace STBEverywhere.Application
 {
     public static class DependencyInjection
@@ -16,10 +15,7 @@ namespace STBEverywhere.Application
                 config.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
             //services.addCarter();
-
             return services;
         }
-
-       
     }
 }

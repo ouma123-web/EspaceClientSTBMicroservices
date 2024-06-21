@@ -12,6 +12,8 @@ namespace STBEverywhere.API.Endpoints
     public record CreateCompteResponse(Guid Id);
     public class CreateCompte : ICarterModule
     {
+
+
         public void AddRoutes(IEndpointRouteBuilder app)
         {
             app.MapPost("/compte", async(CreateCompteRequest request, ISender sender) =>
